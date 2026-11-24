@@ -4,19 +4,21 @@ import { QUIZ_QUESTIONS } from '../data/quizQuestions';
 export const CATEGORY_NAMES = {
   tech: 'Texnologiya va IT',
   creative: 'Ijodkorlik va Dizayn',
-  business: 'Biznes va Boshqaruv',
-  science: 'Ilm-fan va Tadqiqot',
+  business: 'Biznes va Moliya',
+  science: 'Ilm-fan va Tibbiyot',
   social: 'Ijtimoiy va Ta\'lim',
-  engineering: 'Amaliy va Muhandislik'
+  engineering: 'Amaliy va Muhandislik',
+  legal: 'Huquq va Diplomatiya'
 };
 
 export const CATEGORY_COLORS = {
   tech: '#22D3EE',
   creative: '#EC4899',
-  business: '#EAB308',
-  science: '#10B981',
-  social: '#F43F5E',
-  engineering: '#A855F7'
+  business: '#10B981',
+  science: '#14B8A6',
+  social: '#38BDF8',
+  engineering: '#A855F7',
+  legal: '#F59E0B'
 };
 
 export function calculateQuizResults(answers) {
@@ -27,7 +29,8 @@ export function calculateQuizResults(answers) {
     business: 0,
     science: 0,
     social: 0,
-    engineering: 0
+    engineering: 0,
+    legal: 0
   };
 
   const maxPossible = {
@@ -36,12 +39,13 @@ export function calculateQuizResults(answers) {
     business: 0,
     science: 0,
     social: 0,
-    engineering: 0
+    engineering: 0,
+    legal: 0
   };
 
   // Calculate maximum potential scores across all questions
   QUIZ_QUESTIONS.forEach(q => {
-    const qMax = { tech: 0, creative: 0, business: 0, science: 0, social: 0, engineering: 0 };
+    const qMax = { tech: 0, creative: 0, business: 0, science: 0, social: 0, engineering: 0, legal: 0 };
     q.options.forEach(opt => {
       Object.entries(opt.scores || {}).forEach(([cat, val]) => {
         if (val > (qMax[cat] || 0)) {
@@ -67,12 +71,11 @@ export function calculateQuizResults(answers) {
     }
   });
 
-  // Calculate normalized percentage (20% to 100% scale for realistic visualization)
+  // Calculate normalized percentage (15% to 98% scale for realistic visualization)
   const categoryPercentages = {};
   Object.keys(rawScores).forEach(cat => {
     const maxVal = maxPossible[cat] || 1;
     const ratio = rawScores[cat] / maxVal;
-    // Normalized to 15% - 98%
     const pct = Math.min(98, Math.max(15, Math.round(ratio * 90 + 10)));
     categoryPercentages[cat] = pct;
   });
@@ -82,9 +85,9 @@ export function calculateQuizResults(answers) {
     .sort((a, b) => b[1] - a[1])
     .map(([cat, score]) => ({
       categoryId: cat,
-      name: CATEGORY_NAMES[cat],
+      name: CATEGORY_NAMES[cat] || cat,
       score,
-      color: CATEGORY_COLORS[cat]
+      color: CATEGORY_COLORS[cat] || '#A855F7'
     }));
 
   const primaryCategory = sortedCategories[0]?.categoryId || 'tech';
@@ -100,10 +103,10 @@ export function calculateQuizResults(answers) {
 
     // Matching criteria weight (40%)
     let criteriaSum = 0;
-    career.matchCriteria.forEach(crit => {
+    (career.matchCriteria || []).forEach(crit => {
       criteriaSum += categoryPercentages[crit] || 50;
     });
-    const avgCriteria = criteriaSum / (career.matchCriteria.length || 1);
+    const avgCriteria = criteriaSum / ((career.matchCriteria && career.matchCriteria.length) || 1);
     matchScore += avgCriteria * 0.4;
 
     // Baseline consistency (10%)

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useApp } from '../context/AppContext';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -9,10 +10,14 @@ import {
   Palette, 
   LineChart, 
   ShieldAlert, 
-  Rocket 
+  Rocket,
+  Stethoscope,
+  Scale
 } from 'lucide-react';
 
 export default function HeroSection() {
+  const { t } = useApp();
+
   return (
     <section className="hero-root">
       {/* Background glow orbs */}
@@ -26,35 +31,34 @@ export default function HeroSection() {
           <div className="hero-badge">
             <span className="badge-pulse"></span>
             <Sparkles size={14} className="badge-icon" />
-            <span>2030-Yil Kelajak Kasblari Platformasi</span>
+            <span>{t('heroBadge')}</span>
           </div>
 
           <h1 className="hero-title">
-            O‘z Kelajaging <br />
-            <span className="hero-gradient-text">Bitta Qarordan</span> <br />
-            Boshlanadi.
+            {t('heroTitlePrefix')} <br />
+            <span className="hero-gradient-text">{t('heroTitleHighlight')}</span> <br />
+            {t('heroTitleSuffix')}
           </h1>
 
           <p className="hero-motto-en">
-            "Your Future Starts With One Decision."
+            {t('heroMotto')}
           </p>
 
           <p className="hero-description">
-            O‘z qiziqishlaringiz, yashirin qobiliyatlaringiz va kuchli tomonlaringizni aniqlang. 
-            Sun'iy idrok asrida eng talabgir kasbingizni toping va bugunoq 3 yillik shaxsiy rivojlanish xaritangizni tuzing.
+            {t('heroDesc')}
           </p>
 
           {/* Action Buttons */}
           <div className="hero-actions">
             <Link to="/discover" className="btn-primary-gradient hero-btn">
-              <span>Kelajagingni kashf et</span>
+              <span>{t('heroBtnDiscover')}</span>
               <ArrowRight size={18} className="btn-arrow-icon" />
               <div className="btn-glow"></div>
             </Link>
 
             <Link to="/careers" className="btn-secondary-glass hero-btn">
               <Compass size={18} />
-              <span>Kasblarni ko‘rish</span>
+              <span>{t('heroBtnCareers')}</span>
             </Link>
           </div>
 
@@ -62,15 +66,15 @@ export default function HeroSection() {
           <div className="hero-features-row">
             <div className="hero-feat-item">
               <CheckCircle2 size={16} className="feat-check" />
-              <span>15+ Kelajak Kasbi</span>
+              <span>{t('heroFeat1')}</span>
             </div>
             <div className="hero-feat-item">
               <CheckCircle2 size={16} className="feat-check" />
-              <span>Aniq Hisob Algoritmi</span>
+              <span>{t('heroFeat2')}</span>
             </div>
             <div className="hero-feat-item">
               <CheckCircle2 size={16} className="feat-check" />
-              <span>3 Yillik Vision 2030</span>
+              <span>{t('heroFeat3')}</span>
             </div>
           </div>
         </div>
@@ -110,22 +114,22 @@ export default function HeroSection() {
             </div>
 
             <div className="orbit-card orbit-card-3">
-              <div className="orbit-icon-wrap" style={{ background: 'rgba(168, 85, 247, 0.15)', borderColor: '#A855F7' }}>
-                <LineChart size={20} color="#A855F7" />
+              <div className="orbit-icon-wrap" style={{ background: 'rgba(20, 184, 166, 0.15)', borderColor: '#14B8A6' }}>
+                <Stethoscope size={20} color="#14B8A6" />
               </div>
               <div className="orbit-info">
-                <span className="orbit-label">Data Science</span>
-                <span className="orbit-sub">Big Data Analitika</span>
+                <span className="orbit-label">Shifokor / Tibbiyot</span>
+                <span className="orbit-sub">Talab: +35%</span>
               </div>
             </div>
 
             <div className="orbit-card orbit-card-4">
-              <div className="orbit-icon-wrap" style={{ background: 'rgba(239, 68, 68, 0.15)', borderColor: '#EF4444' }}>
-                <ShieldAlert size={20} color="#EF4444" />
+              <div className="orbit-icon-wrap" style={{ background: 'rgba(245, 158, 11, 0.15)', borderColor: '#F59E0B' }}>
+                <Scale size={20} color="#F59E0B" />
               </div>
               <div className="orbit-info">
-                <span className="orbit-label">Kiberxavfsizlik</span>
-                <span className="orbit-sub">3.5M Vakansiya</span>
+                <span className="orbit-label">Advokat & Huquq</span>
+                <span className="orbit-sub">Adolat Posboni</span>
               </div>
             </div>
 
@@ -133,8 +137,8 @@ export default function HeroSection() {
             <div className="hero-floating-stat">
               <Rocket size={18} className="stat-rocket" />
               <div>
-                <strong>Kelajakni hozirdan boshla</strong>
-                <p>15 daqiqada o‘z yo‘nalishingni top</p>
+                <strong>{t('heroMotto')}</strong>
+                <p>15 savolda o‘z yo‘nalishingni top</p>
               </div>
             </div>
           </div>

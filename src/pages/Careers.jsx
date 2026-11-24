@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useApp } from '../context/AppContext';
 import CareerCard from '../components/CareerCard';
 import Modal from '../components/Modal';
 import CareerDetailContent from '../components/CareerDetailContent';
@@ -9,14 +10,12 @@ import { CAREERS_DATA, CATEGORIES } from '../data/careersData';
 import { 
   Search, 
   Briefcase, 
-  Sparkles, 
-  SlidersHorizontal, 
   X,
-  Layers,
   ArrowUpDown
 } from 'lucide-react';
 
 export default function Careers() {
+  const { t } = useApp();
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || 'all';
 
@@ -82,13 +81,13 @@ export default function Careers() {
         <div className="careers-header-center">
           <div className="section-badge">
             <Briefcase size={14} />
-            <span>Kelajak 2030 Katalogi</span>
+            <span>{t('careersBadge')}</span>
           </div>
           <h1 className="careers-title">
-            15+ Zamonaviy va Istiqbolli <span className="text-gradient">Kasblar</span>
+            {t('careersTitle')} <span className="text-gradient">{t('careersHighlight')}</span>
           </h1>
           <p className="careers-subtitle">
-            Har bir kasbning mazmuni, talab qilinadigan ko‘nikmalar, ta'lim imkoniyatlari va 2030 yilgi daromad salohiyati.
+            {t('careersSub')}
           </p>
         </div>
 
@@ -100,7 +99,7 @@ export default function Careers() {
             <input
               type="text"
               className="search-field"
-              placeholder="Kasb nomi, ko‘nikma yoki soha bo‘yicha qidiring..."
+              placeholder={t('careersSearchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -125,9 +124,9 @@ export default function Careers() {
               onChange={(e) => setSortBy(e.target.value)}
               aria-label="Saralash"
             >
-              <option value="default">Tavsiya bo‘yicha</option>
-              <option value="title-asc">Nom bo‘yicha (A → Z)</option>
-              <option value="title-desc">Nom bo‘yicha (Z → A)</option>
+              <option value="default">{t('careersSortDefault')}</option>
+              <option value="title-asc">{t('careersSortAz')}</option>
+              <option value="title-desc">{t('careersSortZa')}</option>
             </select>
           </div>
         </div>
@@ -158,7 +157,7 @@ export default function Careers() {
         {/* Results Counter and Active Filter Info */}
         <div className="careers-count-bar">
           <span>
-            Jami: <strong>{filteredCareers.length}</strong> ta kasb ko‘rsatilmoqda
+            {t('careersTotal')} <strong>{filteredCareers.length}</strong> {t('careersShowing')}
           </span>
           {(searchQuery || selectedCategory !== 'all') && (
             <button
@@ -169,7 +168,7 @@ export default function Careers() {
                 handleCategoryChange('all');
               }}
             >
-              Filtrlarni tozalash
+              {t('careersClearFilters')}
             </button>
           )}
         </div>

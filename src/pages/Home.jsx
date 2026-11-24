@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useApp } from '../context/AppContext';
 import HeroSection from '../components/HeroSection';
 import CareerCard from '../components/CareerCard';
 import Modal from '../components/Modal';
@@ -22,9 +23,10 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
+  const { t } = useApp();
   const [selectedCareerModal, setSelectedCareerModal] = useState(null);
 
-  // Recommended careers to feature on the homepage
+  // Recommended careers to feature on the homepage (top 6 varied)
   const featuredCareers = CAREERS_DATA.slice(0, 6);
 
   return (
@@ -37,24 +39,24 @@ export default function Home() {
         <div className="page-container">
           <div className="metrics-grid">
             <div className="metric-box">
-              <div className="metric-number">15+</div>
-              <div className="metric-label">Kelajak Kasblari</div>
-              <p className="metric-sub">2030 yil talablariga moslangan</p>
+              <div className="metric-number">{t('metric1Val')}</div>
+              <div className="metric-label">{t('metric1Label')}</div>
+              <p className="metric-sub">{t('metric1Sub')}</p>
             </div>
             <div className="metric-box">
-              <div className="metric-number">15</div>
-              <div className="metric-label">Psixometrik Savol</div>
-              <p className="metric-sub">Ko‘nikma va qiziqishlar tahlili</p>
+              <div className="metric-number">{t('metric2Val')}</div>
+              <div className="metric-label">{t('metric2Label')}</div>
+              <p className="metric-sub">{t('metric2Sub')}</p>
             </div>
             <div className="metric-box">
-              <div className="metric-number">3 Yillik</div>
-              <div className="metric-label">Shaxsiy Yo‘l Xaritasi</div>
-              <p className="metric-sub">Bosqichma-bosqich rivojlanish</p>
+              <div className="metric-number">{t('metric3Val')}</div>
+              <div className="metric-label">{t('metric3Label')}</div>
+              <p className="metric-sub">{t('metric3Sub')}</p>
             </div>
             <div className="metric-box">
-              <div className="metric-number">100%</div>
-              <div className="metric-label">Ochiq va Bepul</div>
-              <p className="metric-sub">O‘zbekiston yoshlari uchun</p>
+              <div className="metric-number">{t('metric4Val')}</div>
+              <div className="metric-label">{t('metric4Label')}</div>
+              <p className="metric-sub">{t('metric4Sub')}</p>
             </div>
           </div>
         </div>
@@ -66,13 +68,13 @@ export default function Home() {
           <div className="section-header-center">
             <div className="section-badge">
               <Zap size={14} />
-              <span>Oddiy va Samarali</span>
+              <span>{t('howItWorksBadge')}</span>
             </div>
             <h2 className="section-title">
-              Sayt Qanday <span className="text-gradient">Ishlaydi?</span>
+              {t('howItWorksTitle')} <span className="text-gradient">{t('howItWorksHighlight')}</span>
             </h2>
             <p className="section-subtitle">
-              Orzuingizdagi kasbni topish va unga erishish uchun bor-yo‘g‘i 3 ta oddiy qadam kifoya.
+              {t('howItWorksSub')}
             </p>
           </div>
 
@@ -92,7 +94,7 @@ export default function Home() {
 
           <div className="steps-cta-center">
             <Link to="/discover" className="btn-primary-gradient">
-              <span>Hozirroq testni boshlash</span>
+              <span>{t('howItWorksCta')}</span>
               <ArrowRight size={18} />
             </Link>
           </div>
@@ -106,14 +108,14 @@ export default function Home() {
             <div>
               <div className="section-badge">
                 <Compass size={14} />
-                <span>6 Ta Asosiy Soha</span>
+                <span>{CATEGORIES.filter(c => c.id !== 'all').length} Ta Asosiy Soha</span>
               </div>
               <h2 className="section-title">
                 Mashhur Kasb <span className="text-gradient">Yo‘nalishlari</span>
               </h2>
             </div>
             <Link to="/careers" className="link-see-all">
-              <span>Barcha kasblarni ko‘rish</span>
+              <span>{t('featuredSeeAll')}</span>
               <ChevronRight size={16} />
             </Link>
           </div>
@@ -148,13 +150,13 @@ export default function Home() {
           <div className="section-header-center">
             <div className="section-badge">
               <TrendingUp size={14} />
-              <span>2030 Trendlari</span>
+              <span>{t('featuredBadge')}</span>
             </div>
             <h2 className="section-title">
-              Tavsiya Etilgan <span className="text-gradient">Kasblar</span>
+              {t('featuredTitle')} <span className="text-gradient">{t('featuredHighlight')}</span>
             </h2>
             <p className="section-subtitle">
-              Kelgusi 5–10 yil ichida butun dunyoda va O‘zbekistonda eng yuqori talabga ega bo‘ladigan sohalar.
+              {t('featuredSub')}
             </p>
           </div>
 
@@ -170,7 +172,7 @@ export default function Home() {
 
           <div className="featured-bottom-btn">
             <Link to="/careers" className="btn-secondary-glass">
-              <span>15+ barcha kasblarni ko‘rish</span>
+              <span>{t('featuredSeeAll')}</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -232,15 +234,15 @@ export default function Home() {
               </h2>
               <p className="cta-sub">
                 "Your Future Starts With One Decision." <br />
-                Bugunoq 15 daqiqa vaqt ajrating va 2030 yilgi muvaffaqiyat poydevorini quring.
+                Bugunoq 15 ta savolga javob bering va 2030 yilgi muvaffaqiyat poydevorini quring.
               </p>
               <div className="cta-btn-group">
                 <Link to="/discover" className="btn-primary-gradient cta-main-btn">
-                  <span>Qiziqishlarni aniqlash testini boshlash</span>
+                  <span>{t('howItWorksCta')}</span>
                   <ArrowRight size={18} />
                 </Link>
                 <Link to="/roadmap" className="btn-secondary-glass cta-sub-btn">
-                  <span>Mening Rejam paneli</span>
+                  <span>{t('roadmap')}</span>
                 </Link>
               </div>
             </div>

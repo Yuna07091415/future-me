@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useMemo } from '
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { calculateQuizResults } from '../utils/quizCalculator';
 import { CAREERS_DATA } from '../data/careersData';
+import { TRANSLATIONS } from '../data/translations';
 
 const AppContext = createContext();
 
@@ -39,8 +40,11 @@ export function AppProvider({ children }) {
   // Theme state: dark is default futuristic theme
   const [theme, setTheme] = useLocalStorage('future_me_theme', 'dark');
 
+  // Language state: 'uz' | 'en' | 'ru'
+  const [language, setLanguage] = useLocalStorage('future_me_lang', 'uz');
+
   // Favorites state: array of career IDs
-  const [favorites, setFavorites] = useLocalStorage('future_me_favorites', ['dasturchi', 'ui-ux-dizayner']);
+  const [favorites, setFavorites] = useLocalStorage('future_me_favorites', ['dasturchi', 'doktor', 'advokat']);
 
   // Quiz state: answers map { [qId]: optionIndex }
   const [quizAnswers, setQuizAnswers] = useLocalStorage('future_me_quiz_answers', {});
@@ -56,6 +60,11 @@ export function AppProvider({ children }) {
 
   // Toasts
   const [toasts, setToasts] = useState([]);
+
+  // Translation helper
+  const t = (key) => {
+    return TRANSLATIONS[language]?.[key] || TRANSLATIONS['uz']?.[key] || key;
+  };
 
   // Apply theme to document
   useEffect(() => {
@@ -91,10 +100,10 @@ export function AppProvider({ children }) {
   const toggleFavorite = (careerId) => {
     if (favorites.includes(careerId)) {
       setFavorites(favorites.filter(id => id !== careerId));
-      showToast('Kasb sevimlilardan o‘chirildi', 'info');
+      showToast(language === 'en' ? 'Removed from saved' : language === 'ru' ? 'Удалено из избранного' : 'Kasb sevimlilardan o‘chirildi', 'info');
     } else {
       setFavorites([...favorites, careerId]);
-      showToast('Kasb sevimlilarga qo‘shildi! ⭐', 'success');
+      showToast(language === 'en' ? 'Saved to favorites! ⭐' : language === 'ru' ? 'Добавлено в избранное! ⭐' : 'Kasb sevimlilarga qo‘shildi! ⭐', 'success');
     }
   };
 
@@ -108,7 +117,7 @@ export function AppProvider({ children }) {
 
   const resetQuiz = () => {
     setQuizAnswers({});
-    showToast('Test yangitdan boshlash uchun tozalandi', 'info');
+    showToast(language === 'en' ? 'Test reset successfully' : language === 'ru' ? 'Тест успешно сброшен' : 'Test yangitdan boshlash uchun tozalandi', 'info');
   };
 
   // Quiz results calculation
@@ -134,17 +143,17 @@ export function AppProvider({ children }) {
       ...newGoal
     };
     setGoals(prev => [goalItem, ...prev]);
-    showToast('Yangi maqsad rejangizga muvaffaqiyatli qo‘shildi! 🎯', 'success');
+    showToast(language === 'en' ? 'New goal added! 🎯' : language === 'ru' ? 'Новая цель добавлена! 🎯' : 'Yangi maqsad rejangizga qo‘shildi! 🎯', 'success');
   };
 
   const updateGoal = (id, updatedFields) => {
     setGoals(prev => prev.map(g => g.id === id ? { ...g, ...updatedFields } : g));
-    showToast('Maqsad yangilandi ✍️', 'success');
+    showToast(language === 'en' ? 'Goal updated ✍️' : language === 'ru' ? 'Цель обновлена ✍️' : 'Maqsad yangilandi ✍️', 'success');
   };
 
   const deleteGoal = (id) => {
     setGoals(prev => prev.filter(g => g.id !== id));
-    showToast('Maqsad o‘chirildi', 'info');
+    showToast(language === 'en' ? 'Goal removed' : language === 'ru' ? 'Цель удалена' : 'Maqsad o‘chirildi', 'info');
   };
 
   const toggleGoal = (id) => {
@@ -152,7 +161,7 @@ export function AppProvider({ children }) {
       if (g.id === id) {
         const nextState = !g.completed;
         if (nextState) {
-          showToast('Ajoyib natija! Maqsad bajarildi! 🚀', 'success');
+          showToast(language === 'en' ? 'Goal completed! 🚀' : language === 'ru' ? 'Цель выполнена! 🚀' : 'Ajoyib! Maqsad bajarildi! 🚀', 'success');
         }
         return { ...g, completed: nextState };
       }
@@ -168,7 +177,7 @@ export function AppProvider({ children }) {
       setRoadmapMilestones(prev => prev.filter(id => id !== mId));
     } else {
       setRoadmapMilestones(prev => [...prev, mId]);
-      showToast('Bosqich bajarildi deb belgilandi! 🌟', 'success');
+      showToast(language === 'en' ? 'Milestone achieved! 🌟' : language === 'ru' ? 'Этап выполнен! 🌟' : 'Bosqich bajarildi deb belgilandi! 🌟', 'success');
     }
   };
 
@@ -179,6 +188,9 @@ export function AppProvider({ children }) {
   const value = {
     theme,
     toggleTheme,
+    language,
+    setLanguage,
+    t,
     favorites,
     isFavorite,
     toggleFavorite,

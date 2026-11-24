@@ -50,7 +50,7 @@ export default function Footer() {
             </li>
             <li>
               <Link to="/careers" className="footer-link">
-                <Briefcase size={14} /> 15+ Kasblar katalogi
+                <Briefcase size={14} /> 20+ Kasblar katalogi
               </Link>
             </li>
             <li>
@@ -66,11 +66,11 @@ export default function Footer() {
           <h4 className="footer-col-title">Top Yo‘nalishlar</h4>
           <ul className="footer-links">
             <li><span className="footer-tag-item">Sun'iy Intellekt & IT</span></li>
-            <li><span className="footer-tag-item">UI/UX & Raqamli Dizayn</span></li>
-            <li><span className="footer-tag-item">Katta Ma'lumotlar Tahlili</span></li>
-            <li><span className="footer-tag-item">Kiberxavfsizlik</span></li>
-            <li><span className="footer-tag-item">Texnologik Tadbirkorlik</span></li>
-            <li><span className="footer-tag-item">Biotibbiyot & Genetika</span></li>
+            <li><span className="footer-tag-item">Huquq, Advokatura & Diplomatiya</span></li>
+            <li><span className="footer-tag-item">Biotibbiyot, Shifokorlik & Farmatsevtika</span></li>
+            <li><span className="footer-tag-item">Moliya, Buxgalteriya & Audit</span></li>
+            <li><span className="footer-tag-item">Xalqaro Aviatsiya & Styuardessalik</span></li>
+            <li><span className="footer-tag-item">Robototexnika & Injeneriya</span></li>
           </ul>
         </div>
 

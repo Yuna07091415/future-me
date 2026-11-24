@@ -17,13 +17,8 @@ import {
   Circle, 
   Bookmark, 
   ArrowRight, 
-  Calendar, 
   Sparkles, 
-  ChevronRight, 
-  TrendingUp, 
-  Award,
-  Zap,
-  Filter
+  Zap
 } from 'lucide-react';
 
 export default function Roadmap() {
@@ -31,14 +26,14 @@ export default function Roadmap() {
     goals, 
     addGoal, 
     favorites, 
-    isFavorite, 
     toggleFavorite,
     selectedCareerId, 
     setSelectedCareerId,
     selectedCareer,
     roadmapMilestones,
     isMilestoneCompleted,
-    toggleMilestone
+    toggleMilestone,
+    t
   } = useApp();
 
   const [isAddGoalModalOpen, setIsAddGoalModalOpen] = useState(false);
@@ -113,13 +108,13 @@ export default function Roadmap() {
         <div className="roadmap-header-center">
           <div className="section-badge">
             <MapPin size={14} />
-            <span>Shaxsiy Boshqaruv Paneli</span>
+            <span>{t('roadmapBadge')}</span>
           </div>
           <h1 className="roadmap-title">
-            Mening Kelajak <span className="text-gradient">Rejam</span>
+            {t('roadmapTitle')} <span className="text-gradient">{t('roadmapHighlight')}</span>
           </h1>
           <p className="roadmap-subtitle">
-            Future Vision 2030: O‘z maqsadlaringizni belgilang, 3 yillik bosqichlarni nazorat qiling va natijalarga erishing.
+            {t('roadmapSub')}
           </p>
         </div>
 
@@ -178,21 +173,20 @@ export default function Roadmap() {
             <div className="vision-info-left">
               <div className="vision-badge">
                 <Zap size={14} />
-                <span>MAXSUS FUNKSIYA: FUTURE VISION 2030</span>
+                <span>{t('visionBadge')}</span>
               </div>
               <h2 className="vision-title">
-                3 Yillik Rivojlanish <span className="text-gradient">Xaritasi</span>
+                {t('visionTitle')} <span className="text-gradient">{t('visionHighlight')}</span>
               </h2>
               <p className="vision-desc">
-                Tanlangan kasb bo‘yicha poydevordan xalqaro mutaxassis darajasigacha bo‘lgan aniq bosqichlar. 
-                Har bir bosqichni bajarganingizda belgilab boring!
+                {t('visionDesc')}
               </p>
             </div>
 
             {/* Career Selector Dropdown */}
             <div className="career-select-wrapper">
               <label htmlFor="career-select" className="career-select-label">
-                Qaysi kasb uchun reja ko‘rilsin?
+                {t('careerSelectPrompt')}
               </label>
               <select
                 id="career-select"
@@ -317,10 +311,10 @@ export default function Roadmap() {
                 <span>Rivojlanish Kundaligi</span>
               </div>
               <h2 className="goals-section-title">
-                Shaxsiy <span className="text-gradient">Maqsadlarim</span>
+                {t('goalsTitle')} <span className="text-gradient">{t('goalsHighlight')}</span>
               </h2>
               <p className="goals-section-subtitle">
-                O‘z maqsadlaringizni kiriting, muddatlarni belgilang va har kuni muvaffaqiyatga bir qadam yaqinlashing.
+                {t('goalsSub')}
               </p>
             </div>
 
@@ -330,7 +324,7 @@ export default function Roadmap() {
               onClick={() => setIsAddGoalModalOpen(true)}
             >
               <Plus size={18} />
-              <span>Yangi maqsad qo‘shish</span>
+              <span>{t('btnAddGoal')}</span>
             </button>
           </div>
 
@@ -342,21 +336,21 @@ export default function Roadmap() {
                 className={`filter-pill-btn ${goalFilter === 'all' ? 'filter-pill-active' : ''}`}
                 onClick={() => setGoalFilter('all')}
               >
-                Barchasi ({totalGoals})
+                {t('filterAll')} ({totalGoals})
               </button>
               <button
                 type="button"
                 className={`filter-pill-btn ${goalFilter === 'active' ? 'filter-pill-active' : ''}`}
                 onClick={() => setGoalFilter('active')}
               >
-                Jarayonda ({totalGoals - completedGoals})
+                {t('filterActive')} ({totalGoals - completedGoals})
               </button>
               <button
                 type="button"
                 className={`filter-pill-btn ${goalFilter === 'completed' ? 'filter-pill-active' : ''}`}
                 onClick={() => setGoalFilter('completed')}
               >
-                Bajarilgan ({completedGoals})
+                {t('filterCompleted')} ({completedGoals})
               </button>
             </div>
 
@@ -395,10 +389,10 @@ export default function Roadmap() {
               <span>Saqlanganlar</span>
             </div>
             <h2 className="favorites-section-title">
-              Sevimli <span className="text-gradient">Kasblarim</span>
+              {t('favTitle')} <span className="text-gradient">{t('favHighlight')}</span>
             </h2>
             <p className="favorites-section-subtitle">
-              Sizga yoqqan va kelajak uchun saqlab qo‘ygan sohalar ro‘yxati.
+              {t('favSub')}
             </p>
           </div>
 

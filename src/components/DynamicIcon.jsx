@@ -29,7 +29,16 @@ import {
   CheckCircle2,
   Circle,
   HelpCircle,
-  Briefcase
+  Briefcase,
+  Scale,
+  Gavel,
+  Plane,
+  Calculator,
+  Utensils,
+  Globe,
+  FileText,
+  ShieldCheck,
+  Languages
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -62,7 +71,16 @@ const ICON_MAP = {
   CheckCircle2,
   Circle,
   HelpCircle,
-  Briefcase
+  Briefcase,
+  Scale,
+  Gavel,
+  Plane,
+  Calculator,
+  Utensils,
+  Globe,
+  FileText,
+  ShieldCheck,
+  Languages
 };
 
 export default function DynamicIcon({ name, size = 20, className = '', color }) {

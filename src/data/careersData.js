@@ -50,6 +50,256 @@ export const CAREERS_DATA = [
     whyRecommended: 'Sizda vizual go\'zallikni his etish, nozik did va insonlarning qulayligini o\'ylash (empatiya) xususiyatlari uyg\'unlashgan.'
   },
   {
+    id: 'buxgalter',
+    title: 'Buxgalter / Moliyaviy Auditor',
+    category: 'Biznes va Moliya',
+    categoryId: 'business',
+    iconName: 'Calculator',
+    accentColor: '#10B981',
+    shortDescription: 'Korxona va kompaniyalarning moliyaviy hisobotlarini yurituvchi, soliq va auditi bo‘yicha ekspert.',
+    fullDescription: 'Zamonaviy buxgalter shunchaki sonlarni yozib boruvchi emas, balki korxonaning moliyaviy xavfsizligini ta\'minlovchi strategdir. U xalqaro IFRS standartlari, 1C dasturlari va avtomatlashtirilgan audit tizimlaridan foydalanib daromad va xarajatlarni aniq hisoblab boradi.',
+    matchCriteria: ['business', 'legal'],
+    skills: ['1C Buxgalteriya 8.3', 'IFRS / MHXS xalqaro standartlari', 'Soliq kodeksi va hisobotlar', 'Murakkab Excel / Power Query', 'Moliyaviy audit va tahlil'],
+    softSkills: ['O\'ta yuqori mas\'uliyat', 'Aniqlik va sinchkovlik', 'Konfidensiallik (sir saqlash)', 'Tashkilotchilik'],
+    education: [
+      'TDIU, Jahon Iqtisodiyoti va Diplomatiya Universiteti (JIDU), WIUT moliya-iqtisod fakultetlari',
+      'ACCA (F1-F9), CIPA/CAP xalqaro professional sertifikatlari',
+      'Auditorlik kompaniyalarida (Big 4) amaliyot o\'tash'
+    ],
+    facts: {
+      demand2030: 'Avtomatlashtirish hisobiga intellektual auditorlarga talab +21% oshadi',
+      salaryRange: '$600 — $3,000+ / oyiga',
+      growthTrend: 'Doimiy barqaror va zarur',
+      futureRole: 'AI asosidagi xalqaro moliyaviy nazoratchi va audit rahbari'
+    },
+    whyRecommended: 'Sizda sonlar, hisob-kitoblar va tartib-intizomga nisbatan kuchli qobiliyat bor. Har bir tafsilotni aniq tekshirishni yaxshi ko\'rasiz.'
+  },
+  {
+    id: 'doktor',
+    title: 'Shifokor / Doktor',
+    category: 'Ilm-fan va Tibbiyot',
+    categoryId: 'science',
+    iconName: 'Stethoscope',
+    accentColor: '#14B8A6',
+    shortDescription: 'Inson salomatligini saqlovchi, kasalliklarni aniqlovchi va zamonaviy biotibbiyot texnologiyalari bilan davolovchi mutaxassis.',
+    fullDescription: 'Shifokorlik — insoniyatning eng olijanob va mas\'uliyatli kasblaridan biri. 2030 yil shifokori ilg\'or genetik tahlillar, sun\'iy intellekt tashxislari, robotlashtirilgan jarrohlik va telemeditsina usullaridan foydalanib millionlab insonlar umrini uzaytiradi.',
+    matchCriteria: ['science', 'social'],
+    skills: ['Klinik diagnostika', 'Inson anatomiyasi va fiziologiyasi', 'Farmakologiya va davolash protokollari', 'Raqamli tibbiyot texnologiyalari', 'Tez tibbiy yordam ko‘rsatish'],
+    softSkills: ['Cheksiz empatiya va mehr', 'Stressga yuqori chidamlilik', 'Tezkor va aniq qaror qabul qilish', 'Tinglash madaniyati'],
+    education: [
+      'Toshkent Tibbiyot Akademiyasi (TMA), Samarqand Davlat Tibbiyot Universiteti, xalqaro tibbiyot oliygohlari',
+      'USMLE (AQSh) / PLAB (UK) xalqaro tibbiyot litsenziya imtihonlari',
+      'Klinik ordinatura va nufuzli klinikalarda uzoq yillik stajirovka'
+    ],
+    facts: {
+      demand2030: 'Global aholi o\'sishi bilan shifokorlarga ehtiyoj +35% oshadi',
+      salaryRange: '$800 — $4,500+ / oyiga',
+      growthTrend: 'Eng yuqori va o‘zgarmas talab',
+      futureRole: 'Biotexnologik tibbiyot va robotik jarrohlik yetakchisi'
+    },
+    whyRecommended: 'Insonlarga yordam berish, biologik hodisalarni tushunish va hayot saqlab qolish sizning oliy maqsadingizga to‘liq mos keladi.'
+  },
+  {
+    id: 'stuardessa',
+    title: 'Styuardessa / Avia-hamroh',
+    category: 'Ijtimoiy va Ta\'lim',
+    categoryId: 'social',
+    iconName: 'Plane',
+    accentColor: '#38BDF8',
+    shortDescription: 'Xalqaro aviaparvozlarda yo‘lovchilar xavfsizligi, qulayligi va oliy darajadagi servisni ta\'minlovchi elchi.',
+    fullDescription: 'Styuardessa (bortkuzatuvchi) — bu nafaqat go‘zallik va xushmuomalalik, balki avia-xavfsizlik bo‘yicha professional qutqaruvchi, psixolog va mehmondo‘stlik ustasidir. Dunyo bo‘ylab sayohat qilish, turli millatlar vakillari bilan muloqot qilish bu kasbning eng ajoyib qirrasidir.',
+    matchCriteria: ['social', 'legal'],
+    skills: ['Chet tillarini mukammal bilish (Ingliz, Rus va qo‘shimcha)', 'Favqulodda vaziyatlarda qutqaruv protokollari', 'Bortdagi tibbiy tez yordam ko‘rsatish', 'Xalqaro aviatsiya xavfsizligi qoidalari (ICAO/IATA)', 'Protokol va servis etikasi'],
+    softSkills: ['Stressga favqulodda chidamlilik', 'Muloqotchanlik va samimiyat', 'Jamoada ishonchli ishlash', 'Kutilmagan vaziyatlarda sovuqqonlik'],
+    education: [
+      'Fuqaro aviatsiyasi akademiyalari yoki xalqaro aviakompaniyalar o‘quv markazlari',
+      'IELTS 6.5+ yoki erkin so‘zlashuv darajasidagi xalqaro til sertifikatlari',
+      'Suzish, jismoniy tayyorgarlik va avariya holatlarida qutqarish amaliyoti'
+    ],
+    facts: {
+      demand2030: 'Dunyo bo‘ylab sayohatlar va havo yo‘llari +30% ga kengaymoqda',
+      salaryRange: '$1,200 — $4,000+ / oyiga (Xalqaro aviakompaniyalar: Emirates, Qatar, Uzbekistan Airways)',
+      growthTrend: 'Yuqori nufuzli va sayohatlarga boy',
+      futureRole: 'Xalqaro super-laynerlar bosh xizmat va xavfsizlik koordinatori'
+    },
+    whyRecommended: 'Siz sayohat qilishni, yangi madaniyatlarni kashf etishni va insonlar bilan ochiq muloqotda bo‘lib, ularga ko‘maklashishni sevasiz.'
+  },
+  {
+    id: 'muhandis',
+    title: 'Injener / Muhandis',
+    category: 'Amaliy va Muhandislik',
+    categoryId: 'engineering',
+    iconName: 'Wrench',
+    accentColor: '#06B6D4',
+    shortDescription: 'Robototexnika, avtomatlashtirilgan mexanizmlar, elektrotexnika va sanoat qurilmalarini ixtiro qiluvchi muhandis.',
+    fullDescription: 'Injenerlar ilmiy nazariyalarni amaliy mo\'jizalarga aylantiradi. Dronlar, elektromobillar, sanoat robotlari, quyosh panellari va kosmik apparatlarning har bir mexanik va elektron qismi injenerlar tafakkuri mevasidir.',
+    matchCriteria: ['engineering', 'tech', 'science'],
+    skills: ['Fizika va amaliy mexanika', 'Robototexnika va mikrokontrollerlar (Arduino, STM32)', 'SolidWorks / MATLAB / AutoCAD', 'Sxemotexnika va elektronika', 'PLC va sanoat dasturlash'],
+    softSkills: ['Konstruktorlik tafakkuri', 'Sabrli tadqiqot', 'Qo\'l bilan ishlash chaqqonligi', 'Xavfsizlik qoidalariga sadoqat'],
+    education: [
+      'Toshkent Davlat Texnika Universiteti (TDTU), Turin Politexnika Universiteti (TTPU)',
+      'IEEE a\'zoligi, Robototexnika musobaqalari (FIRST Robotics, WorldSkills)',
+      'Ishchi prototiplar va apparat vositalari loyihalari'
+    ],
+    facts: {
+      demand2030: 'Sanoat 4.0 va avtomatlashtirish sababli +27% talab',
+      salaryRange: '$800 — $3,800+ / oyiga',
+      growthTrend: 'Barqaror va texnologik',
+      futureRole: 'Avtonom tizimlar va kiber-fizik mexanizmlar muhandisi'
+    },
+    whyRecommended: 'Mexanizmlar qanday ishlashini bilish, yangi qurilmalar yasash va fizika qonuniyatlarini amalda sinash sizni to\'lqinlantiradi.'
+  },
+  {
+    id: 'advokat',
+    title: 'Advokat',
+    category: 'Huquq va Diplomatiya',
+    categoryId: 'legal',
+    iconName: 'Scale',
+    accentColor: '#F59E0B',
+    shortDescription: 'Fuqarolar va biznes manfaatlarini sudda himoya qiluvchi, qonun ustuvorligi posboni.',
+    fullDescription: 'Advokat inson huquqlari va adolatning bosh himoyachisidir. U qonunlarni chuqur bilgan holda, sud jarayonlarida o‘z himoyasidagi shaxsni nohaqlikdan asraydi, dalillarni sinchkovlik bilan to‘playdi va o‘tkir mantiq bilan haqiqatni isbotlaydi.',
+    matchCriteria: ['legal', 'social', 'business'],
+    skills: ['Sud protsessi va himoya nutqi', 'Jinoyat, fuqarolik va iqtisodiy huquq', 'Yuridik hujjatlar va dalillar to‘plash', 'Muzokaralar olib borish mahorati', 'Kritik qonuniy tahlil'],
+    softSkills: ['Notiqlik va ishontirish qobiliyati', 'Prinsiplarga sodiqlik va jasorat', 'Kuchli mantiqiy tafakkur', 'Murosasiz adolatparvarlik'],
+    education: [
+      'Toshkent Davlat Yuridik Universiteti (TDYU), JIDU xalqaro huquq fakulteti',
+      'Advokatlik maqomi litsenziyasi va Advokatlar palatasi a\'zoligi',
+      'Sud amaliyotida yirik keyslar bo‘yicha tajriba orttirish'
+    ],
+    facts: {
+      demand2030: 'Raqamli biznes va xususiy mulk himoyasi kengayishi bilan +24% talab',
+      salaryRange: '$900 — $5,000+ / oyiga',
+      growthTrend: 'Yuksak nufuzli va daromadli',
+      futureRole: 'Kiberhuquq va xalqaro arbitraj bosh advokati'
+    },
+    whyRecommended: 'Adolat tuyg‘usi sizda juda kuchli, bahslarda o‘z fikringizni mantiqiy isbotlashni va insonlarni himoya qilishni yoqtirasiz.'
+  },
+  {
+    id: 'yurist',
+    title: 'Yurist / Korporativ Huquqshunos',
+    category: 'Huquq va Diplomatiya',
+    categoryId: 'legal',
+    iconName: 'FileText',
+    accentColor: '#6366F1',
+    shortDescription: 'Kompaniyalar, banklar va xalqaro korporatsiyalarning qonuniy faoliyatini boshqaruvchi yuridik maslahatchi.',
+    fullDescription: 'Yurist har qanday muvaffaqiyatli biznesning poydevoridir. U shartnomalar tuzadi, investitsiya bitimlarini qonuniylashtiradi, davlat organlari bilan munosabatlarni tartibga soladi va kompaniyani katta jarima hamda xatarlardan himoya qiladi.',
+    matchCriteria: ['legal', 'business'],
+    skills: ['Korporativ va xo‘jalik huquqi', 'Xalqaro shartnomalar (Contracts Drafting)', 'Intellektual mulk va mualliflik huquqi', 'Legal Compliance va xavflar tahlili', 'Mehnat qonunchiligi'],
+    softSkills: ['Tafsilotlarga cheksiz diqqatlilik', 'Mantiqiy izchillik', 'Ishonchlilik', 'Muzokarachilik'],
+    education: [
+      'TDYU, Jahon Iqtisodiyoti va Diplomatiya Universiteti (JIDU), Westminster (WIUT)',
+      'LL.M (Xalqaro huquq magistraturasi) xorijiy universitetlarda',
+      'Yirik yuridik firmalar yoki xalqaro konsaltingda amaliyot'
+    ],
+    facts: {
+      demand2030: 'Fintech va global startaplar soni ko‘payishi sababli doimiy ehtiyoj',
+      salaryRange: '$800 — $4,000+ / oyiga',
+      growthTrend: 'Barqaror va xalqaro',
+      futureRole: 'AI etika va global raqamli bitimlar bo‘yicha bosh yurist'
+    },
+    whyRecommended: 'Siz qoidalar, shartnomalar va qonuniy tartibni yaxshi tushunasiz, har qanday ishni xavfsiz va aniq qilishga moyilsiz.'
+  },
+  {
+    id: 'diplomat',
+    title: 'Diplomat / Xalqaro Elchi',
+    category: 'Huquq va Diplomatiya',
+    categoryId: 'legal',
+    iconName: 'Globe',
+    accentColor: '#8B5CF6',
+    shortDescription: 'Davlatning xalqaro manfaatlari, elchixonalar va global muzokaralarda vakillik qiluvchi strategik yetakchi.',
+    fullDescription: 'Diplomatlar urushlarning oldini oladi, xalqaro tinchlik, savdo bitimlari va madaniy aloqalarni o‘rnatadi. Ular bir necha tillarda erkin so‘zlashadi, diplomatik protokol qoidalariga rioya qiladi va davlat nufuzini butun dunyoda himoya qiladi.',
+    matchCriteria: ['legal', 'social', 'business'],
+    skills: ['Xalqaro huquq va munosabatlar', '3+ xorijiy tilni mukammal bilish', 'Diplomatik protokol va etiket', 'Murakkab ko‘p tomonlama muzokaralar', 'Geosiyosiy va strategik tahlil'],
+    softSkills: ['Vazminlik va nozik sezgirlik', 'Xarizmatik yetakchilik', 'Keng dunyoqarash', 'Vatanparvarlik va sadoqat'],
+    education: [
+      'Jahon Iqtisodiyoti va Diplomatiya Universiteti (JIDU), Xalqaro munosabatlar institutlari (MGIMO, Fletcher, Sciences Po)',
+      'Diplomatiya akademiyasi kurslari',
+      'Tashqi ishlar vazirligi (TIV) va BMT/YEXHT missiyalarida amaliyot'
+    ],
+    facts: {
+      demand2030: 'O‘zbekistonning jahon maydonidagi roli kuchayishi bilan yuqori talab',
+      salaryRange: '$1,500 — $6,000+ / oyiga (Xorijdagi elchixonalar ta\'minoti bilan)',
+      growthTrend: 'Elita va nufuzli',
+      futureRole: 'Global iqlim va kosmik shartnomalar bo‘yicha maxsus vakil'
+    },
+    whyRecommended: 'Siz xalqaro siyosat, chet tillari va muzokaralar san\'atiga qiziqasiz, odamlar bilan murosaga kelish va elchilik mahoratingiz yuksak.'
+  },
+  {
+    id: 'oshpaz',
+    title: 'Shef-oshpaz / Restorator',
+    category: 'Ijodkorlik va Dizayn',
+    categoryId: 'creative',
+    iconName: 'Utensils',
+    accentColor: '#F97316',
+    shortDescription: 'Yuqori gastronomiya, mualliflik taomlari va jahon kulinariya san\'atini yaratuvchi ijodkor oshpaz.',
+    fullDescription: 'Zamonaviy shef-oshpaz shunchaki ovqat pishirmaydi, u haqiqiy san\'at asarini yaratadi. Ta\'mlar uyg‘unligi, ranglar gammasi, molekulyar oshxona usullari va zamonaviy restoran biznesi boshqaruvi aynan uning ijodiy tafakkuriga bog‘liq.',
+    matchCriteria: ['creative', 'business'],
+    skills: ['Milliy va jahon gastronomiya texnikasi', 'Molekulyar kulinariya asoslari', 'Menyu arxitekturasi va taomlar servirovkasi', 'Oziq-ovqat xavfsizligi va HACCP standartlari', 'Restoran kalkulyatsiyasi va boshqaruvi'],
+    softSkills: ['Mukammal ta\'m va hid bilish qobiliyati', 'Tezlik va chaqqonlik', 'Jamoani boshqarish', 'Cheksiz pazandalik ilhomi'],
+    education: [
+      'Xalqaro kulinariya akademiyalari (Le Cordon Bleu, Paul Bocuse) yoki gastronomiya kollejlari',
+      'Michelin yulduziga ega restoranlarda amaliyot o‘tash',
+      'Mualliflik menyusi va taomlar taqdimoti tanlovlarida qatnashish'
+    ],
+    facts: {
+      demand2030: 'Turizm va yuqori restoran sanoati har yili +25% ga o‘smoqda',
+      salaryRange: '$700 — $4,000+ / oyiga (Mashhur sheflar uchun cheksiz)',
+      growthTrend: 'Ijodiy va serdaromad',
+      futureRole: 'Eko-gastronomiya va salomatlikka asoslangan kelajak taomlari bosh arxitektori'
+    },
+    whyRecommended: 'Siz o‘z qo‘llaringiz bilan ajoyib narsalar yaratishni, odamlarga quvonch va lazzat ulashishni sevasiz, ijodiy fantaziyangiz boy.'
+  },
+  {
+    id: 'sudya',
+    title: 'Sudya',
+    category: 'Huquq va Diplomatiya',
+    categoryId: 'legal',
+    iconName: 'Gavel',
+    accentColor: '#EC4899',
+    shortDescription: 'Davlat nomidan qonuniy va adolatli qarorlar qabul qiluvchi, odil sudlov oliy vakili.',
+    fullDescription: 'Sudya — jamiyatdagi eng mas\'uliyatli va hurmatga loyiq shaxslardan biridir. U faqat qonunga va o‘z vijdoniga bo‘ysungan holda nizolarni hal qiladi, haqiqatni nohaqlikdan ajratadi va jamiyatda tinchlik hamda adolat barqarorligini ta\'minlaydi.',
+    matchCriteria: ['legal', 'social'],
+    skills: ['Barcha sohaviy qonunlar va kodekslarni chuqur bilish', 'Dalillar va faktlarni xolis baholash', 'Sud majlislarini boshqarish madaniyati', 'Qonuniy qaror va ajrimlarni asoslab yozish', 'Huquqiy tahlil'],
+    softSkills: ['Mutlaq xolislik va mustaqillik', 'Vijdon va qat\'iylik', 'Yuksak axloqiy fazilatlar', 'Hissiyotlarga berilmaslik'],
+    education: [
+      'Toshkent Davlat Yuridik Universiteti (TDYU)',
+      'O‘zbekiston Respublikasi Sudyalar oliy maktabi',
+      'Sud apparatida va yuridik sohada kamida 7-10 yillik qat\'iy talab qilinadigan staj'
+    ],
+    facts: {
+      demand2030: 'Sud tizimini raqamlashtirish bilan professional sudyalar nufuzi doimiy 1-o‘rinda',
+      salaryRange: '$1,200 — $4,500+ / oyiga (Davlat tomonidan to‘liq ta\'minlangan)',
+      growthTrend: 'Yuksak davlat martabasi',
+      futureRole: 'Raqamli odil sudlov va sun\'iy intellekt dalillari bo‘yicha bosh sudya'
+    },
+    whyRecommended: 'Siz har doim xolis, qat\'iy va adolatli fikrlashga intilasiz. Haqiqatni topish va to‘g‘ri qaror qabul qilish sizning qon-qoningizda bor.'
+  },
+  {
+    id: 'oqituvchi',
+    title: 'O‘qituvchi / Zamonaviy Pedagog',
+    category: 'Ijtimoiy va Ta\'lim',
+    categoryId: 'social',
+    iconName: 'GraduationCap',
+    accentColor: '#10B981',
+    shortDescription: 'Yangi avlodni tarbiyalovchi, zamonaviy EdTech texnologiyalaridan foydalanib bilim ulashuvchi zamonaviy pedagog.',
+    fullDescription: '2030 yil o\'qituvchisi — shunchaki darslikni o\'qib beruvchi emas, balki murabbiy (mentor), ilhomlantiruvchi yetakchi va shaxsiy ta\'lim trayektoriyasini tuzuvchi mutaxassisdir. U o\'yinlashtirish (gamification) va interaktiv metodlar bilan o\'qishni sarguzashtga aylantiradi.',
+    matchCriteria: ['social', 'creative'],
+    skills: ['Interaktiv pedagogik metodlar', 'EdTech platformalar (Canvas, Kahoot, Notion)', 'Dastur tuzish (Curriculum Design)', 'Ommaviy nutq va notiqlik', 'Individual yondashuv'],
+    softSkills: ['Sabr-toqat', 'Ilhomlantirish qobiliyati', 'Moslashuvchanlik', 'Pozitiv energiya'],
+    education: [
+      'Toshkent xalqaro ta\'lim universiteti, Nizomiy, Webster universiteti magistraturasi',
+      'CELTA / TESOL (tillar uchun), Zamonaviy pedagogika sertifikatlari',
+      'O\'quv materiallari va ochiq darslar muallifligi'
+    ],
+    facts: {
+      demand2030: 'Sifatli va zamonaviy o\'qituvchilarga talab doimiy 1-o\'rinda',
+      salaryRange: '$600 — $2,500+ / oyiga',
+      growthTrend: 'Barqaror yuqori',
+      futureRole: 'Shaxsiylashtirilgan ta\'lim mentori va EdTech kreatori'
+    },
+    whyRecommended: 'O\'z bilimlaringizni boshqalar bilan bo\'lishish, kimgadir nimadir o\'rgatish va yoshlarning o\'sishini ko\'rish sizga kuch beradi.'
+  },
+  {
     id: 'malumotlar-tahlilchisi',
     title: 'Ma\'lumotlar tahlilchisi',
     category: 'Texnologiya va IT',
@@ -150,34 +400,9 @@ export const CAREERS_DATA = [
     whyRecommended: 'Insonlarni tushunish, ularni eshita olish va ruhiy jihatdan qo\'llab-quvvatlash sizning eng kuchli tomoningizdir.'
   },
   {
-    id: 'oqituvchi',
-    title: 'O‘qituvchi',
-    category: 'Ijtimoiy va Ta\'lim',
-    categoryId: 'social',
-    iconName: 'GraduationCap',
-    accentColor: '#10B981',
-    shortDescription: 'Yangi avlodni tarbiyalovchi, zamonaviy EdTech texnologiyalaridan foydalanib bilim ulashuvchi zamonaviy pedagog.',
-    fullDescription: '2030 yil o\'qituvchisi — shunchaki darslikni o\'qib beruvchi emas, balki murabbiy (mentor), ilhomlantiruvchi yetakchi va shaxsiy ta\'lim trayektoriyasini tuzuvchi mutaxassisdir. U o\'yinlashtirish (gamification) va interaktiv metodlar bilan o\'qishni sarguzashtga aylantiradi.',
-    matchCriteria: ['social', 'creative'],
-    skills: ['Interaktiv pedagogik metodlar', 'EdTech platformalar (Canvas, Kahoot, Notion)', 'Dastur tuzish (Curriculum Design)', 'Ommaviy nutq va notiqlik', 'Individual yondashuv'],
-    softSkills: ['Sabr-toqat', 'Ilhomlantirish qobiliyati', 'Moslashuvchanlik', 'Pozitiv energiya'],
-    education: [
-      'Toshkent xalqaro ta\'lim universiteti, Nizomiy, Webster universiteti magistraturasi',
-      'CELTA / TESOL (tillar uchun), Zamonaviy pedagogika sertifikatlari',
-      'O\'quv materiallari va ochiq darslar muallifligi'
-    ],
-    facts: {
-      demand2030: 'Sifatli va zamonaviy o\'qituvchilarga talab doimiy 1-o\'rinda',
-      salaryRange: '$600 — $2,500+ / oyiga',
-      growthTrend: 'Barqaror yuqori',
-      futureRole: 'Shaxsiylashtirilgan ta\'lim mentori va EdTech kreatori'
-    },
-    whyRecommended: 'O\'z bilimlaringizni boshqalar bilan bo\'lishish, kimgadir nimadir o\'rgatish va yoshlarning o\'sishini ko\'rish sizga kuch beradi.'
-  },
-  {
     id: 'iqtisodchi',
     title: 'Iqtisodchi',
-    category: 'Biznes va Boshqaruv',
+    category: 'Biznes va Moliya',
     categoryId: 'business',
     iconName: 'Coins',
     accentColor: '#EAB308',
@@ -201,8 +426,8 @@ export const CAREERS_DATA = [
   },
   {
     id: 'tadbirkor',
-    title: 'Tadbirkor',
-    category: 'Biznes va Boshqaruv',
+    title: 'Tadbirkor / Startap Asoschisi',
+    category: 'Biznes va Moliya',
     categoryId: 'business',
     iconName: 'Rocket',
     accentColor: '#38BDF8',
@@ -225,59 +450,9 @@ export const CAREERS_DATA = [
     whyRecommended: 'Sizda liderlik xislatlari, mustaqillik, o\'z g\'oyalaringizni hayotga tatbiq etishga bo\'lgan kuchli ichki ishtiyoq bor.'
   },
   {
-    id: 'shifokor',
-    title: 'Shifokor',
-    category: 'Ilm-fan va Tadqiqot',
-    categoryId: 'science',
-    iconName: 'Stethoscope',
-    accentColor: '#14B8A6',
-    shortDescription: 'Inson hayoti va salomatligini saqlovchi, zamonaviy biotibbiyot texnologiyalari bilan davolovchi mutaxassis.',
-    fullDescription: 'Shifokorlik — insoniyatning eng muqaddas va mas\'uliyatli kasblaridan biridir. 2030 yil shifokori genetik diagnostika, robotik jarrohlik, sun\'iy intellekt tahlillari va telemeditsina yordamida kasalliklarni ilk bosqichidayoq bartaraf etadi.',
-    matchCriteria: ['science', 'social'],
-    skills: ['Tibbiy diagnostika', 'Inson anatomiyasi va fiziologiyasi', 'Farmakologiya', 'Raqamli tibbiyot qurilmalari bilan ishlash', 'Birinchi tez tibbiy yordam'],
-    softSkills: ['Maksimal mas\'uliyat', 'Sovuqqonlik va stressga chidamlilik', 'Bemorlarga mehr va hurmat', 'Yuqori aniqlik'],
-    education: [
-      'Toshkent Tibbiyot Akademiyasi (TMA), Samarqand Davlat Tibbiyot Universiteti yoki yetakchi xorijiy tibbiyot oliygohlari',
-      'USMLE (AQSh) / PLAB (Buyuk Britaniya) xalqaro imtihonlari',
-      'Klinik ordinatura va kasalxonalardagi ko\'p yillik amaliyot'
-    ],
-    facts: {
-      demand2030: 'Aholining ko\'payishi va keksaligi tufayli talab +35% ortadi',
-      salaryRange: '$700 — $4,000+ / oyiga',
-      growthTrend: 'Doimiy eng yuqori ehtiyoj',
-      futureRole: 'Biotibbiyot, robotlashtirilgan jarrohlik va gen terapiyasi mutaxassisi'
-    },
-    whyRecommended: 'Insonlarga yordam berish, biologiya va tibbiy ilmlar sizni qiziqtiradi, sizda yuksak mas\'uliyat hissi bor.'
-  },
-  {
-    id: 'muhandis',
-    title: 'Muhandis',
-    category: 'Amaliy va Muhandislik',
-    categoryId: 'engineering',
-    iconName: 'Wrench',
-    accentColor: '#06B6D4',
-    shortDescription: 'Robototexnika, avtomatlashtirilgan mexanizmlar va elektrotexnika qurilmalarini ixtiro qiluvchi muhandis.',
-    fullDescription: 'Muhandislar ilmiy nazariyalarni amaliy mo\'jizalarga aylantiradi. Dronlar, elektromobillar, sanoat robotlari, quyosh panellari va kosmik apparatlarning har bir mexanik va elektron qismi muhandislar tafakkuri mevasidir.',
-    matchCriteria: ['engineering', 'tech', 'science'],
-    skills: ['Fizika va amaliy mexanika', 'Robototexnika va mikrokontrollerlar (Arduino, STM32)', 'SolidWorks / MATLAB', 'Sxemotexnika va elektronika', 'PLC dasturlash'],
-    softSkills: ['Konstruktorlik tafakkuri', 'Sabrli tadqiqot', 'Qo\'l bilan ishlash chaqqonligi', 'Xavfsizlik qoidalariga sadoqat'],
-    education: [
-      'Toshkent Davlat Texnika Universiteti (TDTU), Turin Politexnika Universiteti (TTPU)',
-      'IEEE a\'zoligi, Robototexnika musobaqalari (FIRST Robotics, WorldSkills)',
-      'Ishchi prototiplar va apparat vositalari loyihalari'
-    ],
-    facts: {
-      demand2030: 'Sanoat 4.0 va avtomatlashtirish sababli +27% talab',
-      salaryRange: '$800 — $3,800+ / oyiga',
-      growthTrend: 'Barqaror va texnologik',
-      futureRole: 'Avtonom tizimlar va kiber-fizik mexanizmlar muhandisi'
-    },
-    whyRecommended: 'Mexanizmlar qanday ishlashini bilish, yangi qurilmalar yasash va fizika qonuniyatlarini amalda sinash sizni to\'lqinlantiradi.'
-  },
-  {
     id: 'biolog',
-    title: 'Biolog',
-    category: 'Ilm-fan va Tadqiqot',
+    title: 'Biolog / Biotexnolog',
+    category: 'Ilm-fan va Tibbiyot',
     categoryId: 'science',
     iconName: 'Dna',
     accentColor: '#10B981',
@@ -301,7 +476,7 @@ export const CAREERS_DATA = [
   },
   {
     id: 'grafik-dizayner',
-    title: 'Grafik dizayner',
+    title: 'Grafik dizayner va 3D Rassom',
     category: 'Ijodkorlik va Dizayn',
     categoryId: 'creative',
     iconName: 'Sparkles',
@@ -327,7 +502,7 @@ export const CAREERS_DATA = [
   {
     id: 'marketing-mutaxassisi',
     title: 'Marketing mutaxassisi',
-    category: 'Biznes va Boshqaruv',
+    category: 'Biznes va Moliya',
     categoryId: 'business',
     iconName: 'Megaphone',
     accentColor: '#8B5CF6',
@@ -351,8 +526,8 @@ export const CAREERS_DATA = [
   },
   {
     id: 'ilmiy-tadqiqotchi',
-    title: 'Ilmiy tadqiqotchi',
-    category: 'Ilm-fan va Tadqiqot',
+    title: 'Ilmiy tadqiqotchi / Olim',
+    category: 'Ilm-fan va Tibbiyot',
     categoryId: 'science',
     iconName: 'Microscope',
     accentColor: '#3B82F6',
@@ -380,8 +555,9 @@ export const CATEGORIES = [
   { id: 'all', name: 'Barcha yo‘nalishlar', iconName: 'Layers' },
   { id: 'tech', name: 'Texnologiya va IT', iconName: 'Cpu' },
   { id: 'creative', name: 'Ijodkorlik va Dizayn', iconName: 'Sparkles' },
-  { id: 'business', name: 'Biznes va Boshqaruv', iconName: 'TrendingUp' },
-  { id: 'science', name: 'Ilm-fan va Tadqiqot', iconName: 'Atom' },
+  { id: 'business', name: 'Biznes va Moliya', iconName: 'TrendingUp' },
+  { id: 'science', name: 'Ilm-fan va Tibbiyot', iconName: 'Atom' },
   { id: 'social', name: 'Ijtimoiy va Ta\'lim', iconName: 'Users' },
-  { id: 'engineering', name: 'Amaliy va Muhandislik', iconName: 'Compass' }
+  { id: 'engineering', name: 'Amaliy va Muhandislik', iconName: 'Compass' },
+  { id: 'legal', name: 'Huquq va Diplomatiya', iconName: 'Scale' }
 ];

@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 
 export default function Discover() {
-  const { quizAnswers, saveAnswer, resetQuiz } = useApp();
+  const { quizAnswers, saveAnswer, resetQuiz, t } = useApp();
   const navigate = useNavigate();
 
   // Find first unanswered question or default to 0
@@ -40,7 +40,6 @@ export default function Discover() {
   const isCurrentAnswered = currentAnswer !== undefined;
 
   const answeredCount = Object.keys(quizAnswers).length;
-  const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
 
   const handleSelectOption = (optionIndex) => {
     setWarningMessage('');
@@ -106,13 +105,13 @@ export default function Discover() {
         <div className="discover-header-center">
           <div className="section-badge">
             <Compass size={14} />
-            <span>Psixometrik Tahlil</span>
+            <span>{t('quizBadge')}</span>
           </div>
           <h1 className="discover-title">
-            Qiziqishlaringizni <span className="text-gradient">Aniqlang</span>
+            {t('quizTitle')} <span className="text-gradient">{t('quizHighlight')}</span>
           </h1>
           <p className="discover-subtitle">
-            15 ta maxsus savol orqali shaxsiy fikrlash uslubingiz va sizga eng mos keluvchi kasblarni hisoblaymiz.
+            {t('quizSub')}
           </p>
         </div>
 
@@ -124,17 +123,17 @@ export default function Discover() {
                 Savol: <strong>{currentIndex + 1}</strong> / {totalQuestions}
               </span>
               <span className="progress-answered-tag">
-                {answeredCount} ta savolga javob berildi
+                {answeredCount} / {totalQuestions} ta javob berildi
               </span>
             </div>
             <button
               type="button"
               className="btn-text-reset"
               onClick={handleRestartQuiz}
-              title="Testni qayta boshlash"
+              title={t('quizRestart')}
             >
               <RotateCcw size={14} />
-              <span>Qayta boshlash</span>
+              <span>{t('quizRestart')}</span>
             </button>
           </div>
 
@@ -195,17 +194,17 @@ export default function Discover() {
               disabled={currentIndex === 0}
             >
               <ArrowLeft size={18} />
-              <span>Oldingi</span>
+              <span>{t('quizPrev')}</span>
             </button>
 
             <div className="quiz-current-status">
               {isCurrentAnswered ? (
                 <span className="status-answered">
-                  <CheckCircle2 size={15} /> Javob tanlandi
+                  <CheckCircle2 size={15} /> {t('quizAnswered')}
                 </span>
               ) : (
                 <span className="status-pending">
-                  Variant tanlang
+                  {t('quizSelectOption')}
                 </span>
               )}
             </div>
@@ -215,7 +214,7 @@ export default function Discover() {
               className={`btn-quiz-nav btn-quiz-next ${isCurrentAnswered ? 'btn-next-active' : 'btn-next-disabled'}`}
               onClick={handleNext}
             >
-              <span>{currentIndex === totalQuestions - 1 ? 'Natijalarni ko‘rish' : 'Keyingi'}</span>
+              <span>{currentIndex === totalQuestions - 1 ? t('quizFinish') : t('quizNext')}</span>
               <ArrowRight size={18} />
             </button>
           </div>
@@ -225,9 +224,7 @@ export default function Discover() {
         <div className="quiz-tip-card">
           <HelpCircle size={20} className="tip-icon" />
           <div className="tip-content">
-            <strong>Maslahat:</strong> To‘g‘ri yoki noto‘g‘ri javob yo‘q. 
-            O‘zingizga eng yaqin va samimiy bo‘lgan variantni tanlang. 
-            Xohlagan vaqtingizda oldingi savollarga qaytib, javobni o‘zgartirishingiz mumkin.
+            <strong>{t('quizTipTitle')}</strong> {t('quizTipText')}
           </div>
         </div>
       </div>
@@ -240,13 +237,12 @@ export default function Discover() {
               <Sparkles size={48} className="celebration-sparkle" />
             </div>
 
-            <h2 className="celebration-title">Tabriklaymiz! 🎉</h2>
+            <h2 className="celebration-title">{t('celebrationTitle')}</h2>
             <p className="celebration-motto">
-              Barcha 15 ta savolga muvaffaqiyatli javob berdingiz!
+              {t('celebrationSubtitle')}
             </p>
             <p className="celebration-desc">
-              Sizning qiziqishlaringiz va qobiliyatlaringiz algoritmlar orqali to‘liq hisoblab chiqildi. 
-              Sizga mos TOP 3 ta kelajak kasbini ko‘rishga tayyormisiz?
+              {t('celebrationDesc')}
             </p>
 
             <button
@@ -254,7 +250,7 @@ export default function Discover() {
               className="btn-primary-gradient celebration-cta-btn"
               onClick={handleGoToResults}
             >
-              <span>Natijalarni tahlil qilish</span>
+              <span>{t('celebrationBtn')}</span>
               <ArrowRight size={20} />
             </button>
           </div>

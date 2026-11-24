@@ -11,16 +11,13 @@ import {
   RotateCcw, 
   Sparkles, 
   ArrowRight, 
-  Award, 
-  Compass, 
-  CheckCircle2, 
   Layers, 
-  TrendingUp, 
-  Share2 
+  CheckCircle2, 
+  Compass 
 } from 'lucide-react';
 
 export default function Results() {
-  const { quizResults, quizAnswers, resetQuiz } = useApp();
+  const { quizResults, quizAnswers, resetQuiz, t } = useApp();
   const [selectedCareerModal, setSelectedCareerModal] = useState(null);
   const navigate = useNavigate();
 
@@ -59,15 +56,15 @@ export default function Results() {
         <div className="results-header-center">
           <div className="section-badge">
             <BarChart3 size={14} />
-            <span>Hisoblangan Natijalar</span>
+            <span>{t('resultsBadge')}</span>
           </div>
 
           <h1 className="results-title">
-            Sizga Mos Keluvchi <span className="text-gradient">TOP 3 Kasb</span>
+            {t('resultsTitle')} <span className="text-gradient">{t('resultsHighlight')}</span>
           </h1>
 
           <p className="results-subtitle">
-            15 ta savolga bergan samimiy javoblaringiz asosida JavaScript algoritmi orqali hisoblangan shaxsiy tahlil.
+            {t('resultsSub')}
           </p>
 
           <div className="results-quick-stats">
@@ -85,7 +82,7 @@ export default function Results() {
               onClick={handleRetakeQuiz}
             >
               <RotateCcw size={14} />
-              <span>Testni qayta ishlash</span>
+              <span>{t('resultsRetake')}</span>
             </button>
           </div>
         </div>
@@ -111,15 +108,15 @@ export default function Results() {
               <div>
                 <h3 className="diagram-title">
                   <Layers size={20} className="diagram-icon" />
-                  Qiziqishlar Yo‘nalishi Bo‘yicha Statistika
+                  {t('resultsDiagramTitle')}
                 </h3>
                 <p className="diagram-subtitle">
-                  Sizning javoblaringiz 6 ta asosiy qobiliyat klasteri bo‘yicha qanday taqsimlandi:
+                  {t('resultsDiagramSub')}
                 </p>
               </div>
 
               <div className="diagram-top-badge">
-                <span>Yetakchi soha:</span>
+                <span>{t('resultsLeadingCat')}</span>
                 <strong>{sortedCategories[0]?.name}</strong>
               </div>
             </div>
@@ -161,20 +158,19 @@ export default function Results() {
           <div className="next-steps-card">
             <div className="next-steps-content">
               <h3 className="next-steps-title">
-                Endi nima qilish kerak?
+                {t('resultsNextTitle')}
               </h3>
               <p className="next-steps-desc">
-                Tavsiya etilgan kasblardan birini tanlab, o‘zingizning 3 yillik Future Vision 2030 rejangizni tuzing 
-                yoki qolgan 15+ barcha kasblar katalogini ko‘zdan kechiring.
+                {t('resultsNextDesc')}
               </p>
               <div className="next-steps-buttons">
                 <Link to="/roadmap" className="btn-primary-gradient">
-                  <span>Mening 2030 Yo‘l Xaritam</span>
+                  <span>{t('resultsGoRoadmap')}</span>
                   <ArrowRight size={18} />
                 </Link>
 
                 <Link to="/careers" className="btn-secondary-glass">
-                  <span>Barcha Kasblar Katalogi</span>
+                  <span>{t('resultsGoCareers')}</span>
                   <Compass size={18} />
                 </Link>
               </div>
