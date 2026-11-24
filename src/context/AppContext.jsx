@@ -94,23 +94,26 @@ export function AppProvider({ children }) {
     setToasts(prev => prev.filter(t => t.id !== id));
   };
 
-  // Favorites handlers
-  const isFavorite = (careerId) => favorites.includes(careerId);
+  // Favorites handlers (using functional updates to prevent stale state & immediate sync)
+  const isFavorite = (careerId) => Array.isArray(favorites) && favorites.includes(careerId);
 
   const toggleFavorite = (careerId) => {
-    if (favorites.includes(careerId)) {
-      setFavorites(favorites.filter(id => id !== careerId));
-      showToast(language === 'en' ? 'Removed from saved' : language === 'ru' ? 'Удалено из избранного' : 'Kasb sevimlilardan o‘chirildi', 'info');
-    } else {
-      setFavorites([...favorites, careerId]);
-      showToast(language === 'en' ? 'Saved to favorites! ⭐' : language === 'ru' ? 'Добавлено в избранное! ⭐' : 'Kasb sevimlilarga qo‘shildi! ⭐', 'success');
-    }
+    setFavorites(prev => {
+      const currentList = Array.isArray(prev) ? prev : [];
+      if (currentList.includes(careerId)) {
+        showToast(language === 'en' ? 'Removed from saved' : language === 'ru' ? 'Удалено из избранного' : 'Kasb sevimlilardan o‘chirildi', 'info');
+        return currentList.filter(id => id !== careerId);
+      } else {
+        showToast(language === 'en' ? 'Saved to favorites! ⭐' : language === 'ru' ? 'Добавлено в избранное! ⭐' : 'Kasb sevimlilarga qo‘shildi! ⭐', 'success');
+        return [...currentList, careerId];
+      }
+    });
   };
 
-  // Quiz handlers
+  // Quiz handlers (immediate persistence)
   const saveAnswer = (questionId, optionIndex) => {
     setQuizAnswers(prev => ({
-      ...prev,
+      ...(prev && typeof prev === 'object' ? prev : {}),
       [questionId]: optionIndex
     }));
   };
@@ -122,9 +125,10 @@ export function AppProvider({ children }) {
 
   // Quiz results calculation
   const quizResults = useMemo(() => {
-    const answeredCount = Object.keys(quizAnswers).length;
+    const answersObj = quizAnswers && typeof quizAnswers === 'object' ? quizAnswers : {};
+    const answeredCount = Object.keys(answersObj).length;
     if (answeredCount === 0) return null;
-    return calculateQuizResults(quizAnswers);
+    return calculateQuizResults(answersObj);
   }, [quizAnswers]);
 
   // Sync selected roadmap career with top quiz result if available
@@ -134,7 +138,7 @@ export function AppProvider({ children }) {
     }
   }, [quizResults, selectedCareerId, setSelectedCareerId]);
 
-  // Goals handlers
+  // Goals handlers (functional updates for rock-solid state)
   const addGoal = (newGoal) => {
     const goalItem = {
       id: 'goal-' + Date.now(),
@@ -142,22 +146,22 @@ export function AppProvider({ children }) {
       completed: false,
       ...newGoal
     };
-    setGoals(prev => [goalItem, ...prev]);
+    setGoals(prev => [goalItem, ...(Array.isArray(prev) ? prev : [])]);
     showToast(language === 'en' ? 'New goal added! 🎯' : language === 'ru' ? 'Новая цель добавлена! 🎯' : 'Yangi maqsad rejangizga qo‘shildi! 🎯', 'success');
   };
 
   const updateGoal = (id, updatedFields) => {
-    setGoals(prev => prev.map(g => g.id === id ? { ...g, ...updatedFields } : g));
+    setGoals(prev => (Array.isArray(prev) ? prev : []).map(g => g.id === id ? { ...g, ...updatedFields } : g));
     showToast(language === 'en' ? 'Goal updated ✍️' : language === 'ru' ? 'Цель обновлена ✍️' : 'Maqsad yangilandi ✍️', 'success');
   };
 
   const deleteGoal = (id) => {
-    setGoals(prev => prev.filter(g => g.id !== id));
+    setGoals(prev => (Array.isArray(prev) ? prev : []).filter(g => g.id !== id));
     showToast(language === 'en' ? 'Goal removed' : language === 'ru' ? 'Цель удалена' : 'Maqsad o‘chirildi', 'info');
   };
 
   const toggleGoal = (id) => {
-    setGoals(prev => prev.map(g => {
+    setGoals(prev => (Array.isArray(prev) ? prev : []).map(g => {
       if (g.id === id) {
         const nextState = !g.completed;
         if (nextState) {
@@ -169,16 +173,20 @@ export function AppProvider({ children }) {
     }));
   };
 
-  // Roadmap Milestones handlers
-  const isMilestoneCompleted = (mId) => roadmapMilestones.includes(mId);
+  // Roadmap Milestones handlers (functional updates & immediate persistence)
+  const isMilestoneCompleted = (mId) => Array.isArray(roadmapMilestones) && roadmapMilestones.includes(mId);
 
   const toggleMilestone = (mId) => {
-    if (roadmapMilestones.includes(mId)) {
-      setRoadmapMilestones(prev => prev.filter(id => id !== mId));
-    } else {
-      setRoadmapMilestones(prev => [...prev, mId]);
-      showToast(language === 'en' ? 'Milestone achieved! 🌟' : language === 'ru' ? 'Этап выполнен! 🌟' : 'Bosqich bajarildi deb belgilandi! 🌟', 'success');
-    }
+    setRoadmapMilestones(prev => {
+      const current = Array.isArray(prev) ? prev : [];
+      const exists = current.includes(mId);
+      if (exists) {
+        return current.filter(id => id !== mId);
+      } else {
+        showToast(language === 'en' ? 'Milestone achieved! 🌟' : language === 'ru' ? 'Этап выполнен! 🌟' : 'Bosqich bajarildi deb belgilandi! 🌟', 'success');
+        return [...current, mId];
+      }
+    });
   };
 
   const selectedCareer = useMemo(() => {
@@ -191,14 +199,14 @@ export function AppProvider({ children }) {
     language,
     setLanguage,
     t,
-    favorites,
+    favorites: Array.isArray(favorites) ? favorites : [],
     isFavorite,
     toggleFavorite,
-    quizAnswers,
+    quizAnswers: quizAnswers && typeof quizAnswers === 'object' ? quizAnswers : {},
     saveAnswer,
     resetQuiz,
     quizResults,
-    goals,
+    goals: Array.isArray(goals) ? goals : [],
     addGoal,
     updateGoal,
     deleteGoal,
@@ -206,7 +214,7 @@ export function AppProvider({ children }) {
     selectedCareerId,
     setSelectedCareerId,
     selectedCareer,
-    roadmapMilestones,
+    roadmapMilestones: Array.isArray(roadmapMilestones) ? roadmapMilestones : [],
     isMilestoneCompleted,
     toggleMilestone,
     toasts,
