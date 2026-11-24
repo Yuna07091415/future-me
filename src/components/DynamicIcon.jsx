@@ -1,0 +1,71 @@
+import React from 'react';
+import {
+  Code2,
+  Palette,
+  LineChart,
+  ShieldAlert,
+  Building2,
+  HeartHandshake,
+  GraduationCap,
+  Coins,
+  Rocket,
+  Stethoscope,
+  Wrench,
+  Dna,
+  Sparkles,
+  Megaphone,
+  Microscope,
+  Layers,
+  Cpu,
+  TrendingUp,
+  Atom,
+  Users,
+  Compass,
+  BarChart3,
+  Target,
+  Search,
+  Bookmark,
+  Award,
+  CheckCircle2,
+  Circle,
+  HelpCircle,
+  Briefcase
+} from 'lucide-react';
+
+const ICON_MAP = {
+  Code2,
+  Palette,
+  LineChart,
+  ShieldAlert,
+  Building2,
+  HeartHandshake,
+  GraduationCap,
+  Coins,
+  Rocket,
+  Stethoscope,
+  Wrench,
+  Dna,
+  Sparkles,
+  Megaphone,
+  Microscope,
+  Layers,
+  Cpu,
+  TrendingUp,
+  Atom,
+  Users,
+  Compass,
+  BarChart3,
+  Target,
+  Search,
+  Bookmark,
+  Award,
+  CheckCircle2,
+  Circle,
+  HelpCircle,
+  Briefcase
+};
+
+export default function DynamicIcon({ name, size = 20, className = '', color }) {
+  const IconComponent = ICON_MAP[name] || Sparkles;
+  return <IconComponent size={size} className={className} color={color} />;
+}
