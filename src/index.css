@@ -1,50 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
 
 :root {
   /* ========================================================
-     CYBER LUXURY FUTURISTIC THEME (DARK - DEFAULT)
+     EDITORIAL LUXURY THEME — DEFAULT (WARM SILK & OBSIDIAN)
+     Inspired by Nova Studio & Anna Moreau Reference Designs
      ======================================================== */
-  --bg-primary: #05020D;
-  --bg-secondary: #0A041A;
-  --bg-tertiary: #120A2E;
-  
-  --bg-card: rgba(14, 8, 36, 0.72);
-  --bg-card-hover: rgba(22, 13, 56, 0.85);
-  --bg-glass: rgba(255, 255, 255, 0.03);
-  --bg-glass-strong: rgba(255, 255, 255, 0.07);
+  --bg-primary: #FAF7F2;
+  --bg-secondary: #F3ECE1;
+  --bg-tertiary: #EBE2D3;
+  --bg-dark-section: #121016;
+  --bg-dark-card: #1D1824;
 
-  /* Vivid Neon Palette */
-  --neon-cyan: #00F2FE;
-  --neon-blue: #4FACFE;
-  --primary-purple: #7928CA;
-  --neon-purple: #A855F7;
-  --neon-violet: #C084FC;
-  --accent-pink: #FF0080;
-  --accent-green: #10B981;
-  --accent-amber: #F59E0B;
-  --accent-gold: #FFB703;
-  --accent-rose: #F43F5E;
+  --bg-card: #FFFFFF;
+  --bg-card-warm: #F8F4EC;
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --bg-glass-strong: rgba(255, 255, 255, 0.9);
 
-  --text-primary: #FFFFFF;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  /* Warm Editorial Luxury Accents */
+  --accent-terracotta: #C86D51;
+  --accent-amber: #D97706;
+  --accent-gold: #C28E44;
+  --accent-rose: #D9777F;
+  --accent-green: #15803D;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(168, 85, 247, 0.35);
-  --border-cyan-glow: rgba(0, 242, 254, 0.4);
+  /* Typography Colors */
+  --text-primary: #141018;
+  --text-secondary: #57524E;
+  --text-muted: #8C867E;
 
-  /* Luminous Glows */
-  --glow-cyan: 0 0 30px rgba(0, 242, 254, 0.35);
-  --glow-purple: 0 0 35px rgba(121, 40, 202, 0.4);
-  --glow-pink: 0 0 30px rgba(255, 0, 128, 0.35);
+  /* Borders & Dividers */
+  --border-subtle: rgba(20, 16, 24, 0.08);
+  --border-warm: rgba(200, 109, 81, 0.28);
+  --border-card: rgba(20, 16, 24, 0.06);
 
-  /* Hologram Gradients */
-  --gradient-primary: linear-gradient(135deg, #7928CA 0%, #A855F7 50%, #00F2FE 100%);
-  --gradient-hologram: linear-gradient(135deg, #FFFFFF 0%, #00F2FE 35%, #A855F7 70%, #FF0080 100%);
-  --gradient-neon: linear-gradient(135deg, #00F2FE 0%, #A855F7 50%, #FF0080 100%);
-  --gradient-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
-  --gradient-dark: linear-gradient(180deg, #05020D 0%, #0A041A 100%);
+  /* Signature Pills & Buttons */
+  --pill-dark-bg: #141018;
+  --pill-dark-text: #FFFFFF;
+  --pill-warm-bg: rgba(200, 109, 81, 0.1);
+  --pill-warm-text: #C86D51;
 
+  /* Gradients */
+  --gradient-terracotta: linear-gradient(135deg, #C86D51 0%, #D97706 100%);
+  --gradient-dark: linear-gradient(180deg, #141018 0%, #1E1826 100%);
+  --gradient-card-warm: linear-gradient(180deg, #FFFFFF 0%, #F8F4EC 100%);
+
+  /* Border Radii */
   --radius-xs: 6px;
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -52,54 +52,54 @@
   --radius-xl: 32px;
   --radius-full: 9999px;
 
+  /* Typography Fonts */
   --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
 }
 
-[data-theme="light"],
-html.light {
+[data-theme="dark"],
+html.dark {
   /* ========================================================
-     CRYSTAL VISION LUXURY THEME (LIGHT MODE)
+     EDITORIAL LUXURY THEME — DARK (VELVET NOIR & WARM ROSE GOLD)
+     Inspired by Anna Moreau Reference Design
      ======================================================== */
-  --bg-primary: #F8FAFC;
-  --bg-secondary: #F1F5F9;
-  --bg-tertiary: #E2E8F0;
+  --bg-primary: #0F0A15;
+  --bg-secondary: #171020;
+  --bg-tertiary: #221830;
+  --bg-dark-section: #0B0710;
+  --bg-dark-card: #1B1326;
 
-  --bg-card: rgba(255, 255, 255, 0.88);
-  --bg-card-hover: rgba(255, 255, 255, 0.98);
-  --bg-glass: rgba(15, 23, 42, 0.03);
-  --bg-glass-strong: rgba(15, 23, 42, 0.06);
+  --bg-card: rgba(28, 20, 38, 0.88);
+  --bg-card-warm: rgba(35, 25, 48, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-glass-strong: rgba(255, 255, 255, 0.08);
 
-  --neon-cyan: #0284C7;
-  --neon-blue: #2563EB;
-  --primary-purple: #7C3AED;
-  --neon-purple: #9333EA;
-  --neon-violet: #8B5CF6;
-  --accent-pink: #E11D48;
-  --accent-green: #059669;
-  --accent-amber: #D97706;
+  --accent-terracotta: #E29578;
+  --accent-amber: #E2B170;
+  --accent-gold: #ECC880;
+  --accent-rose: #E8B4B8;
+  --accent-green: #34D399;
 
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
+  --text-primary: #F9F6F0;
+  --text-secondary: #A8A0B2;
+  --text-muted: #726A7C;
 
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-glow: rgba(147, 51, 234, 0.25);
-  --border-cyan-glow: rgba(2, 132, 199, 0.25);
+  --border-subtle: rgba(226, 177, 112, 0.15);
+  --border-warm: rgba(226, 177, 112, 0.35);
+  --border-card: rgba(255, 255, 255, 0.08);
 
-  --glow-cyan: 0 4px 20px rgba(2, 132, 199, 0.15);
-  --glow-purple: 0 4px 20px rgba(124, 58, 237, 0.15);
-  --glow-pink: 0 4px 20px rgba(225, 29, 72, 0.15);
+  --pill-dark-bg: #E2B170;
+  --pill-dark-text: #0F0A15;
+  --pill-warm-bg: rgba(226, 177, 112, 0.15);
+  --pill-warm-text: #E2B170;
 
-  --gradient-hologram: linear-gradient(135deg, #0F172A 0%, #7C3AED 50%, #0284C7 100%);
-  --gradient-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
-  --gradient-dark: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  --gradient-terracotta: linear-gradient(135deg, #E2B170 0%, #E29578 100%);
+  --gradient-dark: linear-gradient(180deg, #0F0A15 0%, #171020 100%);
+  --gradient-card-warm: linear-gradient(180deg, rgba(35, 25, 48, 0.95) 0%, rgba(28, 20, 38, 0.85) 100%);
 }
 
-/* ========================================================
-   BASE RESETS & DEFAULTS
-   ======================================================== */
+/* Base Resets & Defaults */
 * {
   margin: 0;
   padding: 0;
@@ -124,7 +124,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* CUSTOM FUTURISTIC SCROLLBAR */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -134,12 +134,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--primary-purple), var(--neon-cyan));
+  background: var(--accent-terracotta);
   border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-purple);
 }
 
 a {

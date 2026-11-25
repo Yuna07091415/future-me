@@ -4,186 +4,222 @@ import { useApp } from '../context/AppContext';
 import { 
   Sparkles, 
   ArrowRight, 
+  ArrowUpRight,
   Compass, 
   CheckCircle2, 
   Cpu, 
-  Palette, 
-  ShieldAlert, 
-  Rocket,
-  Stethoscope,
-  Scale,
+  Stethoscope, 
+  Scale, 
   Plane,
-  Calculator,
-  Flame,
-  Globe,
-  Terminal,
-  Activity
+  Award,
+  Users,
+  TrendingUp,
+  Star,
+  Play
 } from 'lucide-react';
 
 export default function HeroSection() {
   const { t } = useApp();
-  const [activeChip, setActiveChip] = useState(0);
+  const [activePreview, setActivePreview] = useState(0);
 
-  const telemetryData = [
+  const previewCareers = [
     { 
       role: 'AI Dasturchi', 
       cat: 'Texnologiya', 
       stat: '+38% Global Talab', 
-      color: '#22D3EE', 
       icon: Cpu,
-      insight: '$1,500 — $5,000+ oylik' 
+      color: '#C86D51'
     },
     { 
-      role: 'Shifokor / Biotibbiyot', 
+      role: 'Biotibbiyot Shifokori', 
       cat: 'Tibbiyot', 
       stat: 'Oliy Darajadagi Ehtiyoj', 
-      color: '#14B8A6', 
       icon: Stethoscope,
-      insight: 'Genetika & Telemeditsina' 
+      color: '#D97706'
     },
     { 
       role: 'Xalqaro Advokat', 
-      cat: 'Huquq & Adolat', 
+      cat: 'Huquq & Arbitraj', 
       stat: 'Yuksak Nufuz', 
-      color: '#F59E0B', 
       icon: Scale,
-      insight: 'Kiberhuquq & Arbitraj' 
+      color: '#9333EA'
     },
     { 
-      role: 'Styuardessa / Avia', 
+      role: 'Avia Styuardessa', 
       cat: 'Aviatsiya', 
-      stat: '140+ Mamlakat Parvozi', 
-      color: '#38BDF8', 
+      stat: '140+ Mamlakat', 
       icon: Plane,
-      insight: 'Global Sayohatlar' 
+      color: '#0284C7'
     }
   ];
 
   return (
-    <section className="hero-root hero-futuristic-mesh">
-      {/* Dynamic Aurora Ambient Glows */}
-      <div className="aurora-glow aurora-cyan"></div>
-      <div className="aurora-glow aurora-purple"></div>
-      <div className="aurora-glow aurora-pink"></div>
-      <div className="cyber-grid-floor"></div>
-
-      <div className="hero-container">
-        {/* Left Column: Visionary Narrative */}
-        <div className="hero-content">
-          {/* Cyber Status Ticker */}
-          <div className="cyber-status-pill">
-            <span className="live-radar-ping">
-              <span className="radar-core-dot"></span>
-              <span className="radar-wave"></span>
-            </span>
-            <Terminal size={14} className="terminal-icon" />
-            <span className="ticker-text">FUTURE ME 2030 // NEURAL CAREER RADAR ONLINE</span>
+    <section className="hero-editorial-root">
+      <div className="page-container hero-editorial-container">
+        {/* Left Column: Editorial Headline & Actions */}
+        <div className="hero-editorial-left">
+          {/* Top Pill Badge (Image 1 & 2 style) */}
+          <div className="editorial-pill-badge">
+            <span className="pill-dot"></span>
+            <span>Shaxsiy Rivojlanish Platformasi</span>
           </div>
 
-          <h1 className="hero-title hero-display-title">
-            {t('heroTitlePrefix')} <br />
-            <span className="hero-hologram-text">{t('heroTitleHighlight')}</span> <br />
-            {t('heroTitleSuffix')}
-          </h1>
-
-          <div className="hero-motto-badge">
-            <Sparkles size={16} className="motto-sparkle" />
-            <span>{t('heroMotto')}</span>
+          {/* Large Editorial Headline with Serif Italic Accent */}
+          <div className="hero-headline-wrapper">
+            <h1 className="hero-editorial-headline">
+              O‘z Kelajagingni <br />
+              <span className="editorial-serif-italic">Bitta Qaror</span> Bilan Yarat
+            </h1>
+            {/* Hand-drawn decorative slash marks (Image 1 & 2 style) */}
+            <div className="editorial-slash-doodles" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
 
-          <p className="hero-description hero-desc-pro">
-            {t('heroDesc')}
+          {/* Brand Motto Pill */}
+          <div className="hero-motto-callout">
+            <Sparkles size={16} className="motto-icon" />
+            <span>"Your Future Starts With One Decision."</span>
+          </div>
+
+          <p className="hero-editorial-lead">
+            FUTURE ME — o‘quvchilarga o‘z qiziqishlari, qobiliyatlari va kuchli tomonlarini aniqlash, 2030-yilgi eng nufuzli kasblarni tanlash hamda shaxsiy rivojlanish rejasini tuzishda yordam beradigan zamonaviy platforma.
           </p>
 
-          {/* Action Hub */}
-          <div className="hero-actions">
-            <Link to="/discover" className="btn-cyber-primary hero-btn">
-              <div className="btn-cyber-glow"></div>
+          {/* Action Buttons (Solid dark pill + Outlined glass pill) */}
+          <div className="hero-editorial-actions">
+            <Link to="/discover" className="btn-editorial-primary">
               <span>{t('heroBtnDiscover')}</span>
-              <ArrowRight size={18} className="btn-arrow-icon" />
+              <div className="btn-circle-icon">
+                <ArrowRight size={16} />
+              </div>
             </Link>
 
-            <Link to="/careers" className="btn-cyber-outline hero-btn">
+            <Link to="/careers" className="btn-editorial-outline">
               <Compass size={18} />
               <span>{t('heroBtnCareers')}</span>
             </Link>
           </div>
+        </div>
 
-          {/* Real-time Feature Metrics */}
-          <div className="hero-tech-badges">
-            <div className="tech-badge-item">
-              <Activity size={15} color="#22D3EE" />
-              <span>22 Zamonaviy Kasb</span>
+        {/* Right Column: Architectural Arch Doorway & Hero Visual (Image 1 & 2 style) */}
+        <div className="hero-editorial-right">
+          <div className="hero-arch-stage">
+            {/* Concentric Architectural Arch Frames (Image 2 style) */}
+            <div className="arch-concentric-ring arch-ring-outer"></div>
+            <div className="arch-concentric-ring arch-ring-middle"></div>
+            <div className="arch-concentric-ring arch-ring-inner"></div>
+
+            {/* Arch Centerpiece Portal Card */}
+            <div className="arch-portal-card">
+              <div className="portal-atmosphere"></div>
+              
+              {/* Minimalist Graphic Silhouette & Emblem */}
+              <div className="portal-emblem-badge">
+                <span className="portal-emblem-text">FUTURE ME</span>
+                <span className="portal-emblem-year">2030 // VISION</span>
+              </div>
+
+              {/* Interactive Career Selector Tabs */}
+              <div className="portal-career-cards-stack">
+                {previewCareers.map((item, idx) => {
+                  const Icon = item.icon;
+                  const isActive = activePreview === idx;
+                  return (
+                    <div 
+                      key={idx}
+                      className={`portal-career-row ${isActive ? 'active-row' : ''}`}
+                      onMouseEnter={() => setActivePreview(idx)}
+                    >
+                      <div className="career-row-icon" style={{ color: item.color }}>
+                        <Icon size={18} />
+                      </div>
+                      <div className="career-row-info">
+                        <strong className="career-row-role">{item.role}</strong>
+                        <span className="career-row-cat">{item.cat} • {item.stat}</span>
+                      </div>
+                      <div className="career-row-arrow">
+                        <ArrowUpRight size={15} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="tech-badge-item">
-              <Flame size={15} color="#EC4899" />
-              <span>Multi-Vektorli Algoritm</span>
+
+            {/* Floating Card 1: 100+ Projects Delivered style (from Image 1) */}
+            <div className="floating-metric-card floating-top-right">
+              <div className="floating-metric-body">
+                <div className="floating-metric-value">22+</div>
+                <div className="floating-metric-label">Zamonaviy Kasb</div>
+              </div>
+              <div className="floating-circle-arrow">
+                <ArrowUpRight size={16} />
+              </div>
             </div>
-            <div className="tech-badge-item">
-              <Globe size={15} color="#10B981" />
-              <span>3 Yillik Vision 2030</span>
+
+            {/* Floating Card 2: 98% Client Satisfaction rating badge (from Image 1 & 2) */}
+            <div className="floating-metric-card floating-bottom-left">
+              <div className="floating-star-row">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={13} fill="#F59E0B" color="#F59E0B" />
+                ))}
+              </div>
+              <div className="floating-rating-label">98% Aniq Tavsiyalar</div>
+              <div className="floating-rating-sub">Psixometrik 7-Vektor</div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Right Column: Holographic Cyber Console & Telemetry Radar */}
-        <div className="hero-visual">
-          <div className="cyber-hologram-stage">
-            {/* Holographic Concentric Orbital Rings */}
-            <div className="radar-ring-1"></div>
-            <div className="radar-ring-2"></div>
-            <div className="radar-ring-3"></div>
-            <div className="radar-scanner-beam"></div>
-
-            {/* Central Holographic Core Console */}
-            <div className="hologram-core-sphere">
-              <div className="sphere-inner-glow"></div>
-              <div className="core-branding">
-                <Rocket size={34} className="core-rocket-icon" />
-                <span className="core-brand-name">FUTURE ME</span>
-                <span className="core-system-label">2030 RADAR</span>
-              </div>
+      {/* Metrics Ribbon (The iconic dark capsule bar spanning across below Hero, Image 1 & 2 style) */}
+      <div className="page-container hero-ribbon-wrapper">
+        <div className="hero-dark-ribbon">
+          <div className="ribbon-item">
+            <div className="ribbon-icon-wrap">
+              <Users size={20} />
             </div>
+            <div className="ribbon-text-group">
+              <span className="ribbon-num">22+</span>
+              <span className="ribbon-label">Istiqbolli Kasblar</span>
+            </div>
+          </div>
 
-            {/* Orbiting Interactive Career Satellites */}
-            {telemetryData.map((item, idx) => {
-              const Icon = item.icon;
-              const isActive = activeChip === idx;
-              return (
-                <div 
-                  key={idx} 
-                  className={`satellite-card satellite-${idx + 1} ${isActive ? 'satellite-active' : ''}`}
-                  onMouseEnter={() => setActiveChip(idx)}
-                >
-                  <div 
-                    className="satellite-icon-box"
-                    style={{ 
-                      background: `${item.color}20`, 
-                      borderColor: `${item.color}80`,
-                      color: item.color 
-                    }}
-                  >
-                    <Icon size={18} />
-                  </div>
-                  <div className="satellite-text-group">
-                    <span className="satellite-role">{item.role}</span>
-                    <span className="satellite-stat" style={{ color: item.color }}>{item.stat}</span>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="ribbon-divider"></div>
 
-            {/* Live Hologram Telemetry HUD Box */}
-            <div className="hero-live-hud-panel">
-              <div className="hud-header">
-                <span className="hud-indicator-dot"></span>
-                <span className="hud-title">FAOL TELEMETRIYA</span>
-                <span className="hud-stat-tag">2030 PROGNOZ</span>
-              </div>
-              <div className="hud-body">
-                <strong>{telemetryData[activeChip].role}</strong>
-                <p>{telemetryData[activeChip].insight} • {telemetryData[activeChip].stat}</p>
-              </div>
+          <div className="ribbon-item">
+            <div className="ribbon-icon-wrap">
+              <Award size={20} />
+            </div>
+            <div className="ribbon-text-group">
+              <span className="ribbon-num">15 Ta</span>
+              <span className="ribbon-label">Chuqur Savollar</span>
+            </div>
+          </div>
+
+          <div className="ribbon-divider"></div>
+
+          <div className="ribbon-item">
+            <div className="ribbon-icon-wrap">
+              <TrendingUp size={20} />
+            </div>
+            <div className="ribbon-text-group">
+              <span className="ribbon-num">7 Ta</span>
+              <span className="ribbon-label">Iste'dod Vektori</span>
+            </div>
+          </div>
+
+          <div className="ribbon-divider"></div>
+
+          <div className="ribbon-item">
+            <div className="ribbon-icon-wrap">
+              <Star size={20} />
+            </div>
+            <div className="ribbon-text-group">
+              <span className="ribbon-num">98%</span>
+              <span className="ribbon-label">Mamnuniyat Darajasi</span>
             </div>
           </div>
         </div>

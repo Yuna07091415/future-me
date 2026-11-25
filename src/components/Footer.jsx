@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Compass, BarChart3, Briefcase, MapPin, Heart, ArrowUpRight } from 'lucide-react';
+import { Sparkles, Compass, BarChart3, Briefcase, MapPin, Heart, ArrowRight, ArrowUpRight, Send, Check } from 'lucide-react';
 
 export default function Footer() {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (newsletterEmail.trim()) {
+      setSubscribed(true);
+      setTimeout(() => {
+        setNewsletterEmail('');
+        setSubscribed(false);
+      }, 3500);
+    }
+  };
+
   return (
-    <footer className="footer-root">
-      <div className="footer-glow-bg"></div>
+    <footer className="footer-root editorial-footer">
       <div className="footer-container">
-        {/* Col 1: Brand & Motto */}
+        {/* Col 1: Brand & Motto (Image 1 style) */}
         <div className="footer-brand-col">
           <Link to="/" className="brand-logo footer-logo">
             <div className="logo-badge">
@@ -24,69 +37,70 @@ export default function Footer() {
           <p className="footer-desc">
             O‘quvchilarga o‘z qiziqishlari, kuchli tomonlari va salohiyatini kashf etishga yordam beruvchi innovatsion o‘zbek platformasi.
           </p>
-          <div className="footer-badge-tag">
-            <span className="dot-live"></span> 2030-yil Kasblar Ekotizimi
+          <div className="footer-social-links-row">
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="social-pill-link">Telegram</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-pill-link">Instagram</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-pill-link">YouTube</a>
           </div>
         </div>
 
-        {/* Col 2: Sahifalar */}
+        {/* Col 2: Sahifalar (Quick Links) */}
         <div className="footer-nav-col">
-          <h4 className="footer-col-title">Asosiy Bo‘limlar</h4>
+          <h4 className="footer-col-title">Asosiy Sahifalar</h4>
           <ul className="footer-links">
             <li>
-              <Link to="/" className="footer-link">
-                <Sparkles size={14} /> Bosh sahifa
-              </Link>
+              <Link to="/" className="footer-link">Bosh sahifa</Link>
             </li>
             <li>
-              <Link to="/discover" className="footer-link">
-                <Compass size={14} /> Qiziqishlar testi
-              </Link>
+              <Link to="/discover" className="footer-link">Qiziqishlar testi</Link>
             </li>
             <li>
-              <Link to="/results" className="footer-link">
-                <BarChart3 size={14} /> Tahlil natijalari
-              </Link>
+              <Link to="/results" className="footer-link">Tahlil natijalari</Link>
             </li>
             <li>
-              <Link to="/careers" className="footer-link">
-                <Briefcase size={14} /> 20+ Kasblar katalogi
-              </Link>
+              <Link to="/careers" className="footer-link">22 ta Kasb katalogi</Link>
             </li>
             <li>
-              <Link to="/roadmap" className="footer-link">
-                <MapPin size={14} /> 2030 Yo‘l xaritasi
-              </Link>
+              <Link to="/roadmap" className="footer-link">2030 Yo‘l xaritasi</Link>
             </li>
           </ul>
         </div>
 
-        {/* Col 3: Yo'nalishlar */}
+        {/* Col 3: Yo'nalishlar (Top Services/Fields) */}
         <div className="footer-nav-col">
           <h4 className="footer-col-title">Top Yo‘nalishlar</h4>
           <ul className="footer-links">
             <li><span className="footer-tag-item">Sun'iy Intellekt & IT</span></li>
-            <li><span className="footer-tag-item">Huquq, Advokatura & Diplomatiya</span></li>
-            <li><span className="footer-tag-item">Biotibbiyot, Shifokorlik & Farmatsevtika</span></li>
-            <li><span className="footer-tag-item">Moliya, Buxgalteriya & Audit</span></li>
-            <li><span className="footer-tag-item">Xalqaro Aviatsiya & Styuardessalik</span></li>
-            <li><span className="footer-tag-item">Robototexnika & Injeneriya</span></li>
+            <li><span className="footer-tag-item">Huquq & Diplomatiya</span></li>
+            <li><span className="footer-tag-item">Tibbiyot & Biotexnologiya</span></li>
+            <li><span className="footer-tag-item">Moliya & Audit</span></li>
+            <li><span className="footer-tag-item">Aviatsiya & Xizmat ko‘rsatish</span></li>
+            <li><span className="footer-tag-item">Muhandislik & Konstruksiya</span></li>
           </ul>
         </div>
 
-        {/* Col 4: Qadriyatlar */}
-        <div className="footer-nav-col">
-          <h4 className="footer-col-title">Bizning Shior</h4>
-          <div className="footer-quote-box">
-            <p className="footer-quote-text">
-              "Kelajakni oldindan aytib berishning eng yaxshi yo‘li — uni o‘zingiz yaratishingizdir."
-            </p>
-            <span className="footer-quote-author">— Alan Kay</span>
-          </div>
-          <Link to="/discover" className="footer-cta-pill">
-            <span>Testni boshlash</span>
-            <ArrowUpRight size={15} />
-          </Link>
+        {/* Col 4: Newsletter Subscription ("Stay in the loop" - Image 1 style) */}
+        <div className="footer-nav-col footer-newsletter-col">
+          <h4 className="footer-col-title">Yangiliklardan Xabardor Bo‘ling</h4>
+          <p className="newsletter-desc">
+            Eng so‘nggi kasbiy tendensiyalar va ta'lim grantlari bo‘yicha xabarlarni pochtangizga oling.
+          </p>
+          <form onSubmit={handleSubscribe} className="newsletter-form-pill">
+            <input 
+              type="email" 
+              placeholder="Email manzilingiz" 
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
+              required
+              className="newsletter-input" 
+            />
+            <button type="submit" className="newsletter-submit-btn" aria-label="Yuborish">
+              {subscribed ? <Check size={16} /> : <ArrowRight size={16} />}
+            </button>
+          </form>
+          {subscribed && (
+            <span className="newsletter-success-tag">Rahmat! Obuna bo‘ldingiz.</span>
+          )}
         </div>
       </div>
 
@@ -95,6 +109,11 @@ export default function Footer() {
           <p className="footer-copy">
             © {new Date().getFullYear()} FUTURE ME. Barcha huquqlar himoyalangan.
           </p>
+          <div className="footer-legal-links">
+            <a href="#privacy" className="footer-sub-link">Maxfiylik siyosati</a>
+            <span className="sep-bullet">•</span>
+            <a href="#terms" className="footer-sub-link">Foydalanish shartlari</a>
+          </div>
           <p className="footer-love">
             O‘zbekiston yoshlarining porloq kelajagi uchun <Heart size={14} className="heart-icon" /> bilan yaratildi.
           </p>
