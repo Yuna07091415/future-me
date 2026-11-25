@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { 
@@ -8,137 +8,181 @@ import {
   CheckCircle2, 
   Cpu, 
   Palette, 
-  LineChart, 
   ShieldAlert, 
   Rocket,
   Stethoscope,
-  Scale
+  Scale,
+  Plane,
+  Calculator,
+  Flame,
+  Globe,
+  Terminal,
+  Activity
 } from 'lucide-react';
 
 export default function HeroSection() {
   const { t } = useApp();
+  const [activeChip, setActiveChip] = useState(0);
+
+  const telemetryData = [
+    { 
+      role: 'AI Dasturchi', 
+      cat: 'Texnologiya', 
+      stat: '+38% Global Talab', 
+      color: '#22D3EE', 
+      icon: Cpu,
+      insight: '$1,500 — $5,000+ oylik' 
+    },
+    { 
+      role: 'Shifokor / Biotibbiyot', 
+      cat: 'Tibbiyot', 
+      stat: 'Oliy Darajadagi Ehtiyoj', 
+      color: '#14B8A6', 
+      icon: Stethoscope,
+      insight: 'Genetika & Telemeditsina' 
+    },
+    { 
+      role: 'Xalqaro Advokat', 
+      cat: 'Huquq & Adolat', 
+      stat: 'Yuksak Nufuz', 
+      color: '#F59E0B', 
+      icon: Scale,
+      insight: 'Kiberhuquq & Arbitraj' 
+    },
+    { 
+      role: 'Styuardessa / Avia', 
+      cat: 'Aviatsiya', 
+      stat: '140+ Mamlakat Parvozi', 
+      color: '#38BDF8', 
+      icon: Plane,
+      insight: 'Global Sayohatlar' 
+    }
+  ];
 
   return (
-    <section className="hero-root">
-      {/* Background glow orbs */}
-      <div className="hero-glow-purple"></div>
-      <div className="hero-glow-cyan"></div>
-      <div className="hero-grid-pattern"></div>
+    <section className="hero-root hero-futuristic-mesh">
+      {/* Dynamic Aurora Ambient Glows */}
+      <div className="aurora-glow aurora-cyan"></div>
+      <div className="aurora-glow aurora-purple"></div>
+      <div className="aurora-glow aurora-pink"></div>
+      <div className="cyber-grid-floor"></div>
 
       <div className="hero-container">
-        {/* Left Column: Text & CTAs */}
+        {/* Left Column: Visionary Narrative */}
         <div className="hero-content">
-          <div className="hero-badge">
-            <span className="badge-pulse"></span>
-            <Sparkles size={14} className="badge-icon" />
-            <span>{t('heroBadge')}</span>
+          {/* Cyber Status Ticker */}
+          <div className="cyber-status-pill">
+            <span className="live-radar-ping">
+              <span className="radar-core-dot"></span>
+              <span className="radar-wave"></span>
+            </span>
+            <Terminal size={14} className="terminal-icon" />
+            <span className="ticker-text">FUTURE ME 2030 // NEURAL CAREER RADAR ONLINE</span>
           </div>
 
-          <h1 className="hero-title">
+          <h1 className="hero-title hero-display-title">
             {t('heroTitlePrefix')} <br />
-            <span className="hero-gradient-text">{t('heroTitleHighlight')}</span> <br />
+            <span className="hero-hologram-text">{t('heroTitleHighlight')}</span> <br />
             {t('heroTitleSuffix')}
           </h1>
 
-          <p className="hero-motto-en">
-            {t('heroMotto')}
-          </p>
+          <div className="hero-motto-badge">
+            <Sparkles size={16} className="motto-sparkle" />
+            <span>{t('heroMotto')}</span>
+          </div>
 
-          <p className="hero-description">
+          <p className="hero-description hero-desc-pro">
             {t('heroDesc')}
           </p>
 
-          {/* Action Buttons */}
+          {/* Action Hub */}
           <div className="hero-actions">
-            <Link to="/discover" className="btn-primary-gradient hero-btn">
+            <Link to="/discover" className="btn-cyber-primary hero-btn">
+              <div className="btn-cyber-glow"></div>
               <span>{t('heroBtnDiscover')}</span>
               <ArrowRight size={18} className="btn-arrow-icon" />
-              <div className="btn-glow"></div>
             </Link>
 
-            <Link to="/careers" className="btn-secondary-glass hero-btn">
+            <Link to="/careers" className="btn-cyber-outline hero-btn">
               <Compass size={18} />
               <span>{t('heroBtnCareers')}</span>
             </Link>
           </div>
 
-          {/* Key Advantages */}
-          <div className="hero-features-row">
-            <div className="hero-feat-item">
-              <CheckCircle2 size={16} className="feat-check" />
-              <span>{t('heroFeat1')}</span>
+          {/* Real-time Feature Metrics */}
+          <div className="hero-tech-badges">
+            <div className="tech-badge-item">
+              <Activity size={15} color="#22D3EE" />
+              <span>22 Zamonaviy Kasb</span>
             </div>
-            <div className="hero-feat-item">
-              <CheckCircle2 size={16} className="feat-check" />
-              <span>{t('heroFeat2')}</span>
+            <div className="tech-badge-item">
+              <Flame size={15} color="#EC4899" />
+              <span>Multi-Vektorli Algoritm</span>
             </div>
-            <div className="hero-feat-item">
-              <CheckCircle2 size={16} className="feat-check" />
-              <span>{t('heroFeat3')}</span>
+            <div className="tech-badge-item">
+              <Globe size={15} color="#10B981" />
+              <span>3 Yillik Vision 2030</span>
             </div>
           </div>
         </div>
 
-        {/* Right Column: Futuristic Interactive Visual Element */}
+        {/* Right Column: Holographic Cyber Console & Telemetry Radar */}
         <div className="hero-visual">
-          <div className="futuristic-card-showcase">
-            {/* Center Core Sphere / Radar */}
-            <div className="core-portal">
-              <div className="portal-ring-outer"></div>
-              <div className="portal-ring-inner"></div>
-              <div className="portal-center">
-                <Sparkles size={38} className="portal-sparkle" />
-                <span className="portal-text">FUTURE ME</span>
+          <div className="cyber-hologram-stage">
+            {/* Holographic Concentric Orbital Rings */}
+            <div className="radar-ring-1"></div>
+            <div className="radar-ring-2"></div>
+            <div className="radar-ring-3"></div>
+            <div className="radar-scanner-beam"></div>
+
+            {/* Central Holographic Core Console */}
+            <div className="hologram-core-sphere">
+              <div className="sphere-inner-glow"></div>
+              <div className="core-branding">
+                <Rocket size={34} className="core-rocket-icon" />
+                <span className="core-brand-name">FUTURE ME</span>
+                <span className="core-system-label">2030 RADAR</span>
               </div>
             </div>
 
-            {/* Orbiting Satellite Cards */}
-            <div className="orbit-card orbit-card-1">
-              <div className="orbit-icon-wrap" style={{ background: 'rgba(34, 211, 238, 0.15)', borderColor: '#22D3EE' }}>
-                <Cpu size={20} color="#22D3EE" />
-              </div>
-              <div className="orbit-info">
-                <span className="orbit-label">AI & Dasturlash</span>
-                <span className="orbit-sub">Talab: +28%</span>
-              </div>
-            </div>
+            {/* Orbiting Interactive Career Satellites */}
+            {telemetryData.map((item, idx) => {
+              const Icon = item.icon;
+              const isActive = activeChip === idx;
+              return (
+                <div 
+                  key={idx} 
+                  className={`satellite-card satellite-${idx + 1} ${isActive ? 'satellite-active' : ''}`}
+                  onMouseEnter={() => setActiveChip(idx)}
+                >
+                  <div 
+                    className="satellite-icon-box"
+                    style={{ 
+                      background: `${item.color}20`, 
+                      borderColor: `${item.color}80`,
+                      color: item.color 
+                    }}
+                  >
+                    <Icon size={18} />
+                  </div>
+                  <div className="satellite-text-group">
+                    <span className="satellite-role">{item.role}</span>
+                    <span className="satellite-stat" style={{ color: item.color }}>{item.stat}</span>
+                  </div>
+                </div>
+              );
+            })}
 
-            <div className="orbit-card orbit-card-2">
-              <div className="orbit-icon-wrap" style={{ background: 'rgba(236, 72, 153, 0.15)', borderColor: '#EC4899' }}>
-                <Palette size={20} color="#EC4899" />
+            {/* Live Hologram Telemetry HUD Box */}
+            <div className="hero-live-hud-panel">
+              <div className="hud-header">
+                <span className="hud-indicator-dot"></span>
+                <span className="hud-title">FAOL TELEMETRIYA</span>
+                <span className="hud-stat-tag">2030 PROGNOZ</span>
               </div>
-              <div className="orbit-info">
-                <span className="orbit-label">UI/UX Dizayn</span>
-                <span className="orbit-sub">Estetika & Empatiya</span>
-              </div>
-            </div>
-
-            <div className="orbit-card orbit-card-3">
-              <div className="orbit-icon-wrap" style={{ background: 'rgba(20, 184, 166, 0.15)', borderColor: '#14B8A6' }}>
-                <Stethoscope size={20} color="#14B8A6" />
-              </div>
-              <div className="orbit-info">
-                <span className="orbit-label">Shifokor / Tibbiyot</span>
-                <span className="orbit-sub">Talab: +35%</span>
-              </div>
-            </div>
-
-            <div className="orbit-card orbit-card-4">
-              <div className="orbit-icon-wrap" style={{ background: 'rgba(245, 158, 11, 0.15)', borderColor: '#F59E0B' }}>
-                <Scale size={20} color="#F59E0B" />
-              </div>
-              <div className="orbit-info">
-                <span className="orbit-label">Advokat & Huquq</span>
-                <span className="orbit-sub">Adolat Posboni</span>
-              </div>
-            </div>
-
-            {/* Bottom floating badge */}
-            <div className="hero-floating-stat">
-              <Rocket size={18} className="stat-rocket" />
-              <div>
-                <strong>{t('heroMotto')}</strong>
-                <p>15 savolda o‘z yo‘nalishingni top</p>
+              <div className="hud-body">
+                <strong>{telemetryData[activeChip].role}</strong>
+                <p>{telemetryData[activeChip].insight} • {telemetryData[activeChip].stat}</p>
               </div>
             </div>
           </div>
