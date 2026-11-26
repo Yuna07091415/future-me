@@ -6,6 +6,7 @@ import Modal from '../components/Modal';
 import CareerDetailContent from '../components/CareerDetailContent';
 import EmptyState from '../components/EmptyState';
 import ProgressBar from '../components/ProgressBar';
+import { sendQuizResultToTelegram, TELEGRAM_CONFIG } from '../utils/telegramService';
 import { 
   BarChart3, 
   RotateCcw, 
@@ -13,12 +14,17 @@ import {
   ArrowRight, 
   Layers, 
   CheckCircle2, 
-  Compass 
+  Compass,
+  Send
 } from 'lucide-react';
 
 export default function Results() {
-  const { quizResults, quizAnswers, resetQuiz, t } = useApp();
+  const { quizResults, quizAnswers, resetQuiz, showToast, t } = useApp();
   const [selectedCareerModal, setSelectedCareerModal] = useState(null);
+  const [userName, setUserName] = useState('');
+  const [userContact, setUserContact] = useState('');
+  const [isSendingResult, setIsSendingResult] = useState(false);
+  const [resultSent, setResultSent] = useState(false);
   const navigate = useNavigate();
 
   // If no answers or quiz not taken
@@ -39,6 +45,25 @@ export default function Results() {
   }
 
   const { topCareers, sortedCategories, totalAnswered } = quizResults;
+
+  const handleSendResultToTelegram = async (e) => {
+    e.preventDefault();
+    setIsSendingResult(true);
+    try {
+      await sendQuizResultToTelegram({
+        name: userName.trim() || 'Mehmon Foydalanuvchi',
+        contact: userContact.trim(),
+        topCareers,
+        totalAnswered,
+      });
+      setResultSent(true);
+      showToast('Test natijalaringiz Telegram botga muvaffaqiyatli yuborildi! 📊', 'success');
+    } catch (err) {
+      showToast(`Telegramga yuborishda xatolik: ${err.message}`, 'error');
+    } finally {
+      setIsSendingResult(false);
+    }
+  };
 
   const handleRetakeQuiz = () => {
     if (window.confirm("Testni qayta topshirishni xohlaysizmi? Oldingi natijalar tozalanadi.")) {
@@ -155,6 +180,58 @@ export default function Results() {
 
         {/* Next Step Action Box */}
         <section className="results-next-steps">
+          <div className="next-steps-card" style={{ marginBottom: '28px' }}>
+            <div className="next-steps-content">
+              <div className="editorial-pill-badge">
+                <span className="pill-dot"></span>
+                <span>Telegram Bot Integratsiyasi</span>
+              </div>
+              <h3 className="next-steps-title">
+                Natijangizni Telegramga Yuboring
+              </h3>
+              <p className="next-steps-desc">
+                TOP 3 mos kasbingiz va tahlil natijangizni <strong>@{TELEGRAM_CONFIG.BOT_USERNAME}</strong> botiga yuboring va shaxsiy maslahat oling.
+              </p>
+
+              <form onSubmit={handleSendResultToTelegram} style={{ maxWidth: '520px', margin: '0 auto 20px auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <input
+                    type="text"
+                    placeholder="Ismingiz (ixtiyoriy)"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    className="together-input"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Telegram @username yoki tel"
+                    value={userContact}
+                    onChange={(e) => setUserContact(e.target.value)}
+                    className="together-input"
+                  />
+                </div>
+                <div className="next-steps-buttons">
+                  <button
+                    type="submit"
+                    disabled={isSendingResult}
+                    className="btn-editorial-primary"
+                  >
+                    <Send size={16} />
+                    <span>{isSendingResult ? 'Yuborilmoqda...' : resultSent ? 'Yuborildi ✓' : 'Natijani Telegramga Yuborish'}</span>
+                  </button>
+                  <a
+                    href={TELEGRAM_CONFIG.BOT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-editorial-outline"
+                  >
+                    <span>Botni Ochish (@{TELEGRAM_CONFIG.BOT_USERNAME})</span>
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+
           <div className="next-steps-card">
             <div className="next-steps-content">
               <h3 className="next-steps-title">
@@ -164,12 +241,12 @@ export default function Results() {
                 {t('resultsNextDesc')}
               </p>
               <div className="next-steps-buttons">
-                <Link to="/roadmap" className="btn-primary-gradient">
+                <Link to="/roadmap" className="btn-editorial-primary">
                   <span>{t('resultsGoRoadmap')}</span>
                   <ArrowRight size={18} />
                 </Link>
 
-                <Link to="/careers" className="btn-secondary-glass">
+                <Link to="/careers" className="btn-editorial-outline">
                   <span>{t('resultsGoCareers')}</span>
                   <Compass size={18} />
                 </Link>

@@ -8,6 +8,7 @@ import CareerDetailContent from '../components/CareerDetailContent';
 import DynamicIcon from '../components/DynamicIcon';
 import { CAREERS_DATA, CATEGORIES } from '../data/careersData';
 import { TESTIMONIALS_DATA, HOW_IT_WORKS_STEPS } from '../data/testimonialsData';
+import { sendApplicationToTelegram, TELEGRAM_CONFIG } from '../utils/telegramService';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -25,10 +26,47 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
-  const { t } = useApp();
+  const { t, showToast } = useApp();
   const [selectedCareerModal, setSelectedCareerModal] = useState(null);
   const [activeCategoryTab, setActiveCategoryTab] = useState('all');
   const [featuredOffset, setFeaturedOffset] = useState(0);
+
+  // Telegram Contact Form State
+  const [leadName, setLeadName] = useState('');
+  const [leadStage, setLeadStage] = useState('');
+  const [leadContact, setLeadContact] = useState('');
+  const [leadMessage, setLeadMessage] = useState('');
+  const [isSendingLead, setIsSendingLead] = useState(false);
+  const [leadSent, setLeadSent] = useState(false);
+
+  const handleLeadSubmit = async (e) => {
+    e.preventDefault();
+    if (!leadName.trim()) {
+      showToast('Iltimos, ismingizni kiriting.', 'error');
+      return;
+    }
+
+    setIsSendingLead(true);
+    try {
+      await sendApplicationToTelegram({
+        name: leadName.trim(),
+        stage: leadStage.trim(),
+        contact: leadContact.trim(),
+        message: leadMessage.trim(),
+      });
+      setLeadSent(true);
+      showToast('Murojaatingiz Telegram botga muvaffaqiyatli yuborildi! 🚀', 'success');
+      setLeadName('');
+      setLeadStage('');
+      setLeadContact('');
+      setLeadMessage('');
+      setTimeout(() => setLeadSent(false), 5000);
+    } catch (err) {
+      showToast(`Telegramga yuborishda xatolik: ${err.message}`, 'error');
+    } finally {
+      setIsSendingLead(false);
+    }
+  };
 
   // Recommended careers to feature in the dark section (Image 1 style)
   const featuredCareers = CAREERS_DATA.slice(0, 6);
@@ -280,26 +318,72 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="cta-together-form-box">
+            <form onSubmit={handleLeadSubmit} className="cta-together-form-box">
               <div className="together-inputs-row">
                 <div className="together-input-group">
-                  <label>Ismingiz</label>
-                  <input type="text" placeholder="Masalan: Azizbek" className="together-input" />
+                  <label>Ismingiz *</label>
+                  <input 
+                    type="text" 
+                    placeholder="Masalan: Azizbek" 
+                    className="together-input" 
+                    value={leadName}
+                    onChange={(e) => setLeadName(e.target.value)}
+                    required
+                  />
                 </div>
                 <div className="together-input-group">
                   <label>Sinfingiz yoki Bosqichingiz</label>
-                  <input type="text" placeholder="Masalan: 10-sinf yoki Talaba" className="together-input" />
+                  <input 
+                    type="text" 
+                    placeholder="Masalan: 10-sinf yoki Talaba" 
+                    className="together-input" 
+                    value={leadStage}
+                    onChange={(e) => setLeadStage(e.target.value)}
+                  />
+                </div>
+                <div className="together-input-group">
+                  <label>Telegram yoki Telefon</label>
+                  <input 
+                    type="text" 
+                    placeholder="Masalan: @azizbek yoki +998 90 123 45 67" 
+                    className="together-input" 
+                    value={leadContact}
+                    onChange={(e) => setLeadContact(e.target.value)}
+                  />
+                </div>
+                <div className="together-input-group">
+                  <label>Qiziqishingiz / Xabar</label>
+                  <input 
+                    type="text" 
+                    placeholder="Masalan: IT va Sun'iy intellekt sohasi" 
+                    className="together-input" 
+                    value={leadMessage}
+                    onChange={(e) => setLeadMessage(e.target.value)}
+                  />
                 </div>
               </div>
-              <div className="together-submit-row">
-                <Link to="/discover" className="btn-editorial-primary w-full-mobile">
-                  <span>Testni Boshlash</span>
+              <div className="together-submit-row" style={{ gap: '12px', flexWrap: 'wrap' }}>
+                <a 
+                  href={TELEGRAM_CONFIG.BOT_URL} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-editorial-outline w-full-mobile"
+                >
+                  <Send size={16} />
+                  <span>Telegram Bot (@{TELEGRAM_CONFIG.BOT_USERNAME})</span>
+                </a>
+                <button 
+                  type="submit" 
+                  disabled={isSendingLead} 
+                  className="btn-editorial-primary w-full-mobile"
+                >
+                  <span>{isSendingLead ? 'Yuborilmoqda...' : leadSent ? 'Yuborildi ✓' : 'Telegramga Yuborish'}</span>
                   <div className="btn-circle-icon">
                     <ArrowRight size={16} />
                   </div>
-                </Link>
+                </button>
               </div>
-            </div>
+            </form>
 
             <div className="together-contact-badges">
               <div className="contact-badge-item">

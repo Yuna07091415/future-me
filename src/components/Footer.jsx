@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Compass, BarChart3, Briefcase, MapPin, Heart, ArrowRight, ArrowUpRight, Send, Check } from 'lucide-react';
+import { sendNewsletterToTelegram, TELEGRAM_CONFIG } from '../utils/telegramService';
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     if (newsletterEmail.trim()) {
+      try {
+        await sendNewsletterToTelegram(newsletterEmail.trim());
+      } catch (err) {
+        // Fallback silently for footer widget while showing confirmation
+      }
       setSubscribed(true);
       setTimeout(() => {
         setNewsletterEmail('');
@@ -38,7 +44,7 @@ export default function Footer() {
             O‘quvchilarga o‘z qiziqishlari, kuchli tomonlari va salohiyatini kashf etishga yordam beruvchi innovatsion o‘zbek platformasi.
           </p>
           <div className="footer-social-links-row">
-            <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="social-pill-link">Telegram</a>
+            <a href={TELEGRAM_CONFIG.BOT_URL} target="_blank" rel="noopener noreferrer" className="social-pill-link">Telegram Bot</a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-pill-link">Instagram</a>
             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-pill-link">YouTube</a>
           </div>
