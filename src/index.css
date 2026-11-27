@@ -2,101 +2,100 @@
 
 :root {
   /* ========================================================
-     EDITORIAL LUXURY THEME — DEFAULT (WARM SILK & OBSIDIAN)
-     Inspired by Nova Studio & Anna Moreau Reference Designs
+     COSMIC ETHEREAL GLASSMORPHISM THEME — DEFAULT (DARK)
+     Inspired by LIVA, NEXORA & FORMLESS Reference Designs
      ======================================================== */
-  --bg-primary: #FAF7F2;
-  --bg-secondary: #F3ECE1;
-  --bg-tertiary: #EBE2D3;
-  --bg-dark-section: #121016;
-  --bg-dark-card: #1D1824;
+  --bg-primary: #06040C;
+  --bg-secondary: #0D0819;
+  --bg-tertiary: #160F29;
+  --bg-dark-section: #080510;
+  --bg-dark-card: rgba(18, 12, 34, 0.78);
 
-  --bg-card: #FFFFFF;
-  --bg-card-warm: #F8F4EC;
-  --bg-glass: rgba(255, 255, 255, 0.7);
-  --bg-glass-strong: rgba(255, 255, 255, 0.9);
+  --bg-card: rgba(18, 12, 34, 0.72);
+  --bg-card-warm: rgba(26, 17, 46, 0.85);
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --bg-glass-strong: rgba(255, 255, 255, 0.07);
 
-  /* Warm Editorial Luxury Accents */
-  --accent-terracotta: #C86D51;
-  --accent-amber: #D97706;
-  --accent-gold: #C28E44;
-  --accent-rose: #D9777F;
-  --accent-green: #15803D;
+  /* Luminous Pink, Lavender & Ice-Blue Accents */
+  --accent-terracotta: #F472B6;
+  --accent-amber: #C084FC;
+  --accent-gold: #38BDF8;
+  --accent-rose: #F9A8D4;
+  --accent-green: #34D399;
 
   /* Typography Colors */
-  --text-primary: #141018;
-  --text-secondary: #57524E;
-  --text-muted: #8C867E;
+  --text-primary: #F8FAFC;
+  --text-secondary: #A19EB0;
+  --text-muted: #6B6680;
 
-  /* Borders & Dividers */
-  --border-subtle: rgba(20, 16, 24, 0.08);
-  --border-warm: rgba(200, 109, 81, 0.28);
-  --border-card: rgba(20, 16, 24, 0.06);
+  /* Hairline Glass Borders */
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-warm: rgba(244, 114, 182, 0.35);
+  --border-card: rgba(255, 255, 255, 0.08);
 
-  /* Signature Pills & Buttons */
-  --pill-dark-bg: #141018;
-  --pill-dark-text: #FFFFFF;
-  --pill-warm-bg: rgba(200, 109, 81, 0.1);
-  --pill-warm-text: #C86D51;
+  /* Luminous Pill Buttons */
+  --pill-dark-bg: linear-gradient(135deg, #F9A8D4 0%, #C084FC 100%);
+  --pill-dark-text: #090514;
+  --pill-warm-bg: rgba(244, 114, 182, 0.12);
+  --pill-warm-text: #F9A8D4;
 
   /* Gradients */
-  --gradient-terracotta: linear-gradient(135deg, #C86D51 0%, #D97706 100%);
-  --gradient-dark: linear-gradient(180deg, #141018 0%, #1E1826 100%);
-  --gradient-card-warm: linear-gradient(180deg, #FFFFFF 0%, #F8F4EC 100%);
+  --gradient-terracotta: linear-gradient(135deg, #F9A8D4 0%, #C084FC 50%, #818CF8 100%);
+  --gradient-dark: linear-gradient(180deg, #06040C 0%, #0D0819 100%);
+  --gradient-card-warm: linear-gradient(145deg, rgba(30, 20, 54, 0.85) 0%, rgba(13, 8, 25, 0.9) 100%);
 
   /* Border Radii */
   --radius-xs: 6px;
   --radius-sm: 10px;
   --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
 
   /* Typography Fonts */
   --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
 }
 
-[data-theme="dark"],
-html.dark {
+[data-theme="light"],
+html.light {
   /* ========================================================
-     EDITORIAL LUXURY THEME — DARK (VELVET NOIR & WARM ROSE GOLD)
-     Inspired by Anna Moreau Reference Design
+     SOFT ROSE BLUSH EDITORIAL (LIGHT MODE — IMAGE 4 STYLE)
      ======================================================== */
-  --bg-primary: #0F0A15;
-  --bg-secondary: #171020;
-  --bg-tertiary: #221830;
-  --bg-dark-section: #0B0710;
-  --bg-dark-card: #1B1326;
+  --bg-primary: #FDF7F8;
+  --bg-secondary: #F7EBEE;
+  --bg-tertiary: #EFE0E4;
+  --bg-dark-section: #150C14;
+  --bg-dark-card: #21131F;
 
-  --bg-card: rgba(28, 20, 38, 0.88);
-  --bg-card-warm: rgba(35, 25, 48, 0.95);
-  --bg-glass: rgba(255, 255, 255, 0.04);
-  --bg-glass-strong: rgba(255, 255, 255, 0.08);
+  --bg-card: #FFFFFF;
+  --bg-card-warm: #FDF2F4;
+  --bg-glass: rgba(255, 255, 255, 0.78);
+  --bg-glass-strong: rgba(255, 255, 255, 0.94);
 
-  --accent-terracotta: #E29578;
-  --accent-amber: #E2B170;
-  --accent-gold: #ECC880;
-  --accent-rose: #E8B4B8;
-  --accent-green: #34D399;
+  --accent-terracotta: #DB2777;
+  --accent-amber: #9333EA;
+  --accent-gold: #0284C7;
+  --accent-rose: #F472B6;
+  --accent-green: #059669;
 
-  --text-primary: #F9F6F0;
-  --text-secondary: #A8A0B2;
-  --text-muted: #726A7C;
+  --text-primary: #1A1016;
+  --text-secondary: #5C4B54;
+  --text-muted: #8F7C86;
 
-  --border-subtle: rgba(226, 177, 112, 0.15);
-  --border-warm: rgba(226, 177, 112, 0.35);
-  --border-card: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(26, 16, 22, 0.08);
+  --border-warm: rgba(219, 39, 119, 0.28);
+  --border-card: rgba(26, 16, 22, 0.06);
 
-  --pill-dark-bg: #E2B170;
-  --pill-dark-text: #0F0A15;
-  --pill-warm-bg: rgba(226, 177, 112, 0.15);
-  --pill-warm-text: #E2B170;
+  --pill-dark-bg: #1A1016;
+  --pill-dark-text: #FFFFFF;
+  --pill-warm-bg: rgba(219, 39, 119, 0.09);
+  --pill-warm-text: #DB2777;
 
-  --gradient-terracotta: linear-gradient(135deg, #E2B170 0%, #E29578 100%);
-  --gradient-dark: linear-gradient(180deg, #0F0A15 0%, #171020 100%);
-  --gradient-card-warm: linear-gradient(180deg, rgba(35, 25, 48, 0.95) 0%, rgba(28, 20, 38, 0.85) 100%);
+  --gradient-terracotta: linear-gradient(135deg, #DB2777 0%, #9333EA 100%);
+  --gradient-dark: linear-gradient(180deg, #1A1016 0%, #2B1A26 100%);
+  --gradient-card-warm: linear-gradient(180deg, #FFFFFF 0%, #FDF2F4 100%);
 }
 
 /* Base Resets & Defaults */
@@ -134,7 +133,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-terracotta);
+  background: linear-gradient(180deg, var(--accent-terracotta), var(--accent-amber));
   border-radius: 4px;
 }
 

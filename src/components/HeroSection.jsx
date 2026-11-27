@@ -6,7 +6,6 @@ import {
   ArrowRight, 
   ArrowUpRight,
   Compass, 
-  CheckCircle2, 
   Cpu, 
   Stethoscope, 
   Scale, 
@@ -15,7 +14,7 @@ import {
   Users,
   TrendingUp,
   Star,
-  Play
+  Heart
 } from 'lucide-react';
 
 export default function HeroSection() {
@@ -28,59 +27,54 @@ export default function HeroSection() {
       cat: 'Texnologiya', 
       stat: '+38% Global Talab', 
       icon: Cpu,
-      color: '#C86D51'
+      color: '#F472B6'
     },
     { 
       role: 'Biotibbiyot Shifokori', 
       cat: 'Tibbiyot', 
-      stat: 'Oliy Darajadagi Ehtiyoj', 
+      stat: 'Oliy Ehtiyoj', 
       icon: Stethoscope,
-      color: '#D97706'
+      color: '#C084FC'
     },
     { 
       role: 'Xalqaro Advokat', 
       cat: 'Huquq & Arbitraj', 
       stat: 'Yuksak Nufuz', 
       icon: Scale,
-      color: '#9333EA'
+      color: '#38BDF8'
     },
     { 
       role: 'Avia Styuardessa', 
       cat: 'Aviatsiya', 
       stat: '140+ Mamlakat', 
       icon: Plane,
-      color: '#0284C7'
+      color: '#F9A8D4'
     }
   ];
 
   return (
-    <section className="hero-editorial-root">
+    <section className="hero-editorial-root cosmic-hero-bg">
+      {/* Ethereal Cosmic Radial Lights */}
+      <div className="cosmic-aura-glow aura-top-right" aria-hidden="true"></div>
+      <div className="cosmic-aura-glow aura-bottom-left" aria-hidden="true"></div>
+
       <div className="page-container hero-editorial-container">
-        {/* Left Column: Editorial Headline & Actions */}
+        {/* Left Column: LIVA / NEXORA Wide Editorial Typography */}
         <div className="hero-editorial-left">
-          {/* Top Pill Badge (Image 1 & 2 style) */}
           <div className="editorial-pill-badge">
             <span className="pill-dot"></span>
-            <span>Shaxsiy Rivojlanish Platformasi</span>
+            <span>FUTURE ME • 2030 EKOTIZIMI</span>
           </div>
 
-          {/* Large Editorial Headline with Serif Italic Accent */}
           <div className="hero-headline-wrapper">
             <h1 className="hero-editorial-headline">
-              O‘z Kelajagingni <br />
-              <span className="editorial-serif-italic">Bitta Qaror</span> Bilan Yarat
+              Kelajagingni <br />
+              <span className="editorial-serif-italic">Bitta Qaror</span> Bilan Qur.
             </h1>
-            {/* Hand-drawn decorative slash marks (Image 1 & 2 style) */}
-            <div className="editorial-slash-doodles" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
           </div>
 
-          {/* Brand Motto Pill */}
           <div className="hero-motto-callout">
-            <Sparkles size={16} className="motto-icon" />
+            <Sparkles size={15} className="motto-icon" />
             <span>"Your Future Starts With One Decision."</span>
           </div>
 
@@ -88,7 +82,7 @@ export default function HeroSection() {
             FUTURE ME — o‘quvchilarga o‘z qiziqishlari, qobiliyatlari va kuchli tomonlarini aniqlash, 2030-yilgi eng nufuzli kasblarni tanlash hamda shaxsiy rivojlanish rejasini tuzishda yordam beradigan zamonaviy platforma.
           </p>
 
-          {/* Action Buttons (Solid dark pill + Outlined glass pill) */}
+          {/* Action Buttons (Luminous Pink/Lavender Pill + Glass Outline) */}
           <div className="hero-editorial-actions">
             <Link to="/discover" className="btn-editorial-primary">
               <span>{t('heroBtnDiscover')}</span>
@@ -102,27 +96,30 @@ export default function HeroSection() {
               <span>{t('heroBtnCareers')}</span>
             </Link>
           </div>
+
+          <div className="hero-status-line">
+            <span className="status-pulse-dot"></span>
+            <span>22+ Zamonaviy Kasb • 7 Vektorli Psixometrik Tahlil</span>
+          </div>
         </div>
 
-        {/* Right Column: Architectural Arch Doorway & Hero Visual (Image 1 & 2 style) */}
+        {/* Right Column: Glowing Ringed Cosmic Orb & Frosted Glass Cards */}
         <div className="hero-editorial-right">
-          <div className="hero-arch-stage">
-            {/* Concentric Architectural Arch Frames (Image 2 style) */}
-            <div className="arch-concentric-ring arch-ring-outer"></div>
-            <div className="arch-concentric-ring arch-ring-middle"></div>
-            <div className="arch-concentric-ring arch-ring-inner"></div>
-
-            {/* Arch Centerpiece Portal Card */}
-            <div className="arch-portal-card">
-              <div className="portal-atmosphere"></div>
-              
-              {/* Minimalist Graphic Silhouette & Emblem */}
-              <div className="portal-emblem-badge">
-                <span className="portal-emblem-text">FUTURE ME</span>
-                <span className="portal-emblem-year">2030 // VISION</span>
+          <div className="cosmic-orb-stage">
+            {/* 3D-Style Glowing Planet / Orb + Tilted Orbital Ring (Image 1 & 3) */}
+            <div className="cosmic-planet-wrapper" aria-hidden="true">
+              <div className="cosmic-planet-sphere">
+                <div className="planet-specular-light"></div>
               </div>
+              <div className="cosmic-planet-ring"></div>
+            </div>
 
-              {/* Interactive Career Selector Tabs */}
+            {/* Frosted Glass Career Preview Stack */}
+            <div className="cosmic-glass-console">
+              <div className="glass-console-header">
+                <span className="console-code">01 / ∞</span>
+                <span className="console-title">2030 VISION</span>
+              </div>
               <div className="portal-career-cards-stack">
                 {previewCareers.map((item, idx) => {
                   const Icon = item.icon;
@@ -134,7 +131,7 @@ export default function HeroSection() {
                       onMouseEnter={() => setActivePreview(idx)}
                     >
                       <div className="career-row-icon" style={{ color: item.color }}>
-                        <Icon size={18} />
+                        <Icon size={17} />
                       </div>
                       <div className="career-row-info">
                         <strong className="career-row-role">{item.role}</strong>
@@ -149,32 +146,32 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Floating Card 1: 100+ Projects Delivered style (from Image 1) */}
+            {/* Floating Glass Card 1: Top Right (Image 1 style) */}
             <div className="floating-metric-card floating-top-right">
               <div className="floating-metric-body">
                 <div className="floating-metric-value">22+</div>
-                <div className="floating-metric-label">Zamonaviy Kasb</div>
+                <div className="floating-metric-label">Istiqbolli Kasb</div>
               </div>
               <div className="floating-circle-arrow">
-                <ArrowUpRight size={16} />
+                <Heart size={15} fill="currentColor" />
               </div>
             </div>
 
-            {/* Floating Card 2: 98% Client Satisfaction rating badge (from Image 1 & 2) */}
+            {/* Floating Glass Card 2: Bottom Left (Image 1 style) */}
             <div className="floating-metric-card floating-bottom-left">
               <div className="floating-star-row">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={13} fill="#F59E0B" color="#F59E0B" />
+                  <Star key={i} size={13} fill="#F472B6" color="#F472B6" />
                 ))}
               </div>
               <div className="floating-rating-label">98% Aniq Tavsiyalar</div>
-              <div className="floating-rating-sub">Psixometrik 7-Vektor</div>
+              <div className="floating-rating-sub">7-Vektorli Algoritm</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Metrics Ribbon (The iconic dark capsule bar spanning across below Hero, Image 1 & 2 style) */}
+      {/* Metrics Glass Ribbon */}
       <div className="page-container hero-ribbon-wrapper">
         <div className="hero-dark-ribbon">
           <div className="ribbon-item">
