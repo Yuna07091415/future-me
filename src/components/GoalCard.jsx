@@ -4,7 +4,63 @@ import { CheckCircle2, Circle, Calendar, Trash2, Edit3, Check, X, AlertCircle } 
 import { formatDateUz } from '../utils/formatters';
 
 export default function GoalCard({ goal }) {
-  const { toggleGoal, deleteGoal, updateGoal } = useApp();
+  const { toggleGoal, deleteGoal, updateGoal, language } = useApp();
+
+  const defaultTitleTranslations = {
+    en: {
+      'goal-1': 'Improve English to IELTS 7.0+ or B2 level',
+      'goal-2': 'Solve at least 5 logical or practical problems weekly',
+      'goal-3': 'Create 1 international-level case study in personal portfolio',
+    },
+    ru: {
+      'goal-1': 'Повысить уровень английского до IELTS 7.0+ или B2',
+      'goal-2': 'Решать не менее 5 логических или практических задач в неделю',
+      'goal-3': 'Создать 1 кейс международного уровня для личного портфолио',
+    },
+  };
+
+  const categoryTranslations = {
+    en: {
+      'Til o‘rganish': 'Language Learning',
+      'Kasbiy ko‘nikma': 'Professional Skill',
+      'Karyera': 'Career',
+      'Mantiqiy rivojlanish': 'Logical Growth',
+      'Shaxsiy rivojlanish': 'Personal Growth',
+    },
+    ru: {
+      'Til o‘rganish': 'Изучение языков',
+      'Kasbiy ko‘nikma': 'Профессиональный навык',
+      'Karyera': 'Карьера',
+      'Mantiqiy rivojlanish': 'Логическое развитие',
+      'Shaxsiy rivojlanish': 'Личностный рост',
+    },
+  };
+
+  const priorityTranslations = {
+    en: {
+      'Yuqori': 'High',
+      'O‘rta': 'Medium',
+      'Past': 'Low',
+    },
+    ru: {
+      'Yuqori': 'Высокий',
+      'O‘rta': 'Средний',
+      'Past': 'Низкий',
+    },
+  };
+
+  const displayTitle =
+    language !== 'uz' && defaultTitleTranslations[language]?.[goal.id]
+      ? defaultTitleTranslations[language][goal.id]
+      : goal.title;
+  const displayCategory =
+    language !== 'uz' && categoryTranslations[language]?.[goal.category]
+      ? categoryTranslations[language][goal.category]
+      : goal.category;
+  const displayPriority =
+    language !== 'uz' && priorityTranslations[language]?.[goal.priority]
+      ? priorityTranslations[language][goal.priority]
+      : goal.priority;
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(goal.title);
   const [editCategory, setEditCategory] = useState(goal.category || 'Shaxsiy rivojlanish');
@@ -112,17 +168,17 @@ export default function GoalCard({ goal }) {
       {/* Goal Main Content */}
       <div className="goal-content">
         <h4 className={`goal-title ${goal.completed ? 'title-completed' : ''}`}>
-          {goal.title}
+          {displayTitle}
         </h4>
 
         <div className="goal-meta-row">
           {goal.category && (
-            <span className="goal-category-badge">{goal.category}</span>
+            <span className="goal-category-badge">{displayCategory}</span>
           )}
 
           {goal.priority && (
             <span className={`goal-priority-badge ${priorityColors[goal.priority] || 'priority-medium'}`}>
-              {goal.priority}
+              {displayPriority}
             </span>
           )}
 
