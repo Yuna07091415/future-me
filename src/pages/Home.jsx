@@ -8,7 +8,7 @@ import CareerDetailContent from '../components/CareerDetailContent';
 import DynamicIcon from '../components/DynamicIcon';
 import { CAREERS_DATA, CATEGORIES } from '../data/careersData';
 import { getLocalizedCategoryName } from '../data/careerTranslations';
-import { TESTIMONIALS_DATA, HOW_IT_WORKS_STEPS } from '../data/testimonialsData';
+import { TESTIMONIALS_DATA, HOW_IT_WORKS_STEPS, getTestimonials, getHowItWorksSteps } from '../data/testimonialsData';
 import { sendApplicationToTelegram, TELEGRAM_CONFIG } from '../utils/telegramService';
 import { 
   Sparkles, 
@@ -232,7 +232,7 @@ export default function Home() {
           </div>
 
           <div className="approach-editorial-grid">
-            {HOW_IT_WORKS_STEPS.map((stepItem, index) => (
+            {getHowItWorksSteps(language).map((stepItem, index) => (
               <div key={index} className="approach-step-card">
                 <div className="step-num-pill">{stepItem.step}</div>
                 <div className="step-icon-container">
@@ -267,7 +267,7 @@ export default function Home() {
           </div>
 
           <div className="testimonials-editorial-grid">
-            {TESTIMONIALS_DATA.map((item) => (
+            {getTestimonials(language).map((item) => (
               <div key={item.id} className="testimonial-editorial-card">
                 <div className="testimonial-stars-row">
                   {[...Array(5)].map((_, i) => (
