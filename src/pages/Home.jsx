@@ -7,6 +7,7 @@ import Modal from '../components/Modal';
 import CareerDetailContent from '../components/CareerDetailContent';
 import DynamicIcon from '../components/DynamicIcon';
 import { CAREERS_DATA, CATEGORIES } from '../data/careersData';
+import { getLocalizedCategoryName } from '../data/careerTranslations';
 import { TESTIMONIALS_DATA, HOW_IT_WORKS_STEPS } from '../data/testimonialsData';
 import { sendApplicationToTelegram, TELEGRAM_CONFIG } from '../utils/telegramService';
 import { 
@@ -26,7 +27,7 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
-  const { t, showToast } = useApp();
+  const { t, language, showToast } = useApp();
   const [selectedCareerModal, setSelectedCareerModal] = useState(null);
   const [activeCategoryTab, setActiveCategoryTab] = useState('all');
   const [featuredOffset, setFeaturedOffset] = useState(0);
@@ -128,7 +129,7 @@ export default function Home() {
                           <ArrowUpRight size={17} />
                         </div>
                       </div>
-                      <h3 className="cat-editorial-title">{cat.name}</h3>
+                      <h3 className="cat-editorial-title">{getLocalizedCategoryName(cat.id, cat.name, language)}</h3>
                       <p className="cat-editorial-count">{careersInCat.length} {t('catCardSuffix')}</p>
                     </Link>
                   );

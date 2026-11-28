@@ -174,7 +174,10 @@ export const TRANSLATIONS = {
     footerRights: 'Barcha huquqlar himoyalangan.',
     footerPrivacy: 'Maxfiylik siyosati',
     footerTerms: 'Foydalanish shartlari',
-    footerLoveText: 'O‘zbekiston yoshlarining porloq kelajagi uchun yaratildi.'
+    footerLoveText: 'O‘zbekiston yoshlarining porloq kelajagi uchun yaratildi.',
+    btnDetails: 'Batafsil',
+    btnPlan2030: '2030 Reja',
+    matchLabel: 'Moslik:'
   },
 
   en: {
@@ -352,7 +355,10 @@ export const TRANSLATIONS = {
     footerRights: 'All rights reserved.',
     footerPrivacy: 'Privacy Policy',
     footerTerms: 'Terms of Service',
-    footerLoveText: 'Crafted for the bright future of youth.'
+    footerLoveText: 'Crafted for the bright future of youth.',
+    btnDetails: 'Details',
+    btnPlan2030: '2030 Plan',
+    matchLabel: 'Match:'
   },
 
   ru: {
@@ -530,6 +536,9 @@ export const TRANSLATIONS = {
     footerRights: 'Все права защищены.',
     footerPrivacy: 'Политика конфиденциальности',
     footerTerms: 'Условия использования',
-    footerLoveText: 'Создано для светлого будущего молодежи.'
+    footerLoveText: 'Создано для светлого будущего молодежи.',
+    btnDetails: 'Подробнее',
+    btnPlan2030: 'План 2030',
+    matchLabel: 'Совпадение:'
   }
 };

@@ -7,6 +7,7 @@ import CareerDetailContent from '../components/CareerDetailContent';
 import EmptyState from '../components/EmptyState';
 import DynamicIcon from '../components/DynamicIcon';
 import { CAREERS_DATA, CATEGORIES } from '../data/careersData';
+import { getLocalizedCategoryName } from '../data/careerTranslations';
 import { 
   Search, 
   Briefcase, 
@@ -15,7 +16,7 @@ import {
 } from 'lucide-react';
 
 export default function Careers() {
-  const { t } = useApp();
+  const { t, language } = useApp();
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || 'all';
 
@@ -147,7 +148,7 @@ export default function Careers() {
                 onClick={() => handleCategoryChange(cat.id)}
               >
                 <DynamicIcon name={cat.iconName} size={15} />
-                <span>{cat.name}</span>
+                <span>{getLocalizedCategoryName(cat.id, cat.name, language)}</span>
                 <span className="cat-pill-count">{count}</span>
               </button>
             );

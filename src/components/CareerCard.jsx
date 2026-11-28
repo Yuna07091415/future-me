@@ -2,12 +2,14 @@ import React from 'react';
 import { useApp } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import DynamicIcon from './DynamicIcon';
+import { getLocalizedCareer } from '../data/careerTranslations';
 import { Bookmark, ArrowRight, TrendingUp, Sparkles } from 'lucide-react';
 
 export default function CareerCard({ career, onOpenDetails, showMatch = false }) {
-  const { isFavorite, toggleFavorite, setSelectedCareerId } = useApp();
+  const { isFavorite, toggleFavorite, setSelectedCareerId, language, t } = useApp();
   const navigate = useNavigate();
 
+  const localizedCareer = getLocalizedCareer(career, language);
   const favorited = isFavorite(career.id);
 
   const handleStartRoadmap = (e) => {
@@ -37,8 +39,8 @@ export default function CareerCard({ career, onOpenDetails, showMatch = false })
         </div>
 
         <div className="career-header-info">
-          <span className="career-category-tag">{career.category}</span>
-          <h3 className="career-card-title">{career.title}</h3>
+          <span className="career-category-tag">{localizedCareer.category}</span>
+          <h3 className="career-card-title">{localizedCareer.title}</h3>
         </div>
 
         {/* Favorite toggle button */}
@@ -60,13 +62,13 @@ export default function CareerCard({ career, onOpenDetails, showMatch = false })
       {showMatch && career.matchPercentage && (
         <div className="career-match-badge">
           <Sparkles size={14} />
-          <span>Moslik: <strong>{career.matchPercentage}%</strong></span>
+          <span>{t('matchLabel')} <strong>{career.matchPercentage}%</strong></span>
         </div>
       )}
 
       {/* Description */}
       <p className="career-card-desc">
-        {career.shortDescription}
+        {localizedCareer.shortDescription}
       </p>
 
       {/* Skills Badges */}
@@ -84,11 +86,11 @@ export default function CareerCard({ career, onOpenDetails, showMatch = false })
       </div>
 
       {/* Key Fact */}
-      {career.facts && (
+      {localizedCareer.facts && (
         <div className="career-card-facts">
           <div className="fact-item">
             <TrendingUp size={14} className="fact-icon" />
-            <span className="fact-text">{career.facts.demand2030}</span>
+            <span className="fact-text">{localizedCareer.facts.demand2030}</span>
           </div>
         </div>
       )}
@@ -98,18 +100,18 @@ export default function CareerCard({ career, onOpenDetails, showMatch = false })
         <button
           type="button"
           className="btn-details"
-          onClick={() => onOpenDetails && onOpenDetails(career)}
+          onClick={() => onOpenDetails && onOpenDetails(localizedCareer)}
         >
-          <span>Batafsil</span>
+          <span>{t('btnDetails')}</span>
         </button>
 
         <button
           type="button"
           className="btn-roadmap-action"
           onClick={handleStartRoadmap}
-          title="2030 Yo‘l xaritasini boshlash"
+          title={t('btnPlan2030')}
         >
-          <span>2030 Reja</span>
+          <span>{t('btnPlan2030')}</span>
           <ArrowRight size={14} />
         </button>
       </div>
