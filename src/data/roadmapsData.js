@@ -337,13 +337,9 @@ export const ROADMAPS_DATA = {
   }
 };
 
-// Fallback dynamic generator for any career id
-export const getRoadmapForCareer = (career) => {
-  if (ROADMAPS_DATA[career.id]) {
-    return ROADMAPS_DATA[career.id];
-  }
-
-  return {
+// Fallback & multilingual dynamic generator for any career id
+export const getRoadmapForCareer = (career, language = 'uz') => {
+  const baseUz = ROADMAPS_DATA[career.id] || {
     title: `${career.title} uchun Future Vision 2030 Rejasi`,
     role: `${career.title} mutaxassisi`,
     years: [
@@ -353,8 +349,8 @@ export const getRoadmapForCareer = (career) => {
         focus: `${career.category} sohasidagi asosiy bilimlarni egallash va dunyoqarashni kengaytirish`,
         milestones: [
           { id: `${career.id}-y1-1`, title: 'Ingliz tilini B2 darajasiga oshirish (xalqaro manbalar bilan ishlash)' },
-          { id: `${career.id}-y1-2`, title: `${career.skills[0] || 'Asosiy ko‘nikma'} bo‘yicha bazaviy bilimlarni o‘zlashtirish` },
-          { id: `${career.id}-y1-3`, title: `${career.skills[1] || 'Ikkinchi muhim ko‘nikma'} bo‘yicha onlayn kurslar tamomlash` },
+          { id: `${career.id}-y1-2`, title: `${career.skills?.[0] || 'Asosiy ko‘nikma'} bo‘yicha bazaviy bilimlarni o‘zlashtirish` },
+          { id: `${career.id}-y1-3`, title: `${career.skills?.[1] || 'Ikkinchi muhim ko‘nikma'} bo‘yicha onlayn kurslar tamomlash` },
           { id: `${career.id}-y1-4`, title: 'Sohaga oid eng nufuzli 5 ta xalqaro kitobni mutolaa qilish' },
           { id: `${career.id}-y1-5`, title: 'Soha yetakchilari va professional hamjamiyatlarga qo‘shilish' }
         ]
@@ -364,7 +360,7 @@ export const getRoadmapForCareer = (career) => {
         title: 'Amaliyot: Chuqurlashuv va Ilk Loyihalar',
         focus: 'Nazariyani amaliyotga tatbiq etish, jamoaviy tajriba va mahorat sinovi',
         milestones: [
-          { id: `${career.id}-y2-1`, title: `${career.skills[2] || 'Murakkab ko‘nikma'} bilan amaliy topshiriqlarni mustaqil bajarish` },
+          { id: `${career.id}-y2-1`, title: `${career.skills?.[2] || 'Murakkab ko‘nikma'} bilan amaliy topshiriqlarni mustaqil bajarish` },
           { id: `${career.id}-y2-2`, title: 'Haqiqiy buyurtma yoki jamoaviy loyihada bevosita qatnashish' },
           { id: `${career.id}-y2-3`, title: 'Shaxsiy kasbiy portfolioga dastlabki 3 ta sifatli ishni joylash' },
           { id: `${career.id}-y2-4`, title: 'Soha mutaxassisidan bevosita mentorlik va maslahatlar olish' },
@@ -381,6 +377,105 @@ export const getRoadmapForCareer = (career) => {
           { id: `${career.id}-y3-3`, title: 'Yetakchi kompaniyada amaliyot (stajirovka) yoki doimiy ish o‘rnini band qilish' },
           { id: `${career.id}-y3-4`, title: 'Kasbiy tajribalarni yoshlar bilan bo‘lishish va shaxsiy brendni shakllantirish' },
           { id: `${career.id}-y3-5`, title: '2030 yilgi global tendensiyalarga mos yangi texnologiyalarni integratsiya qilish' }
+        ]
+      }
+    ]
+  };
+
+  if (language === 'uz') {
+    return baseUz;
+  }
+
+  // Preserve exact milestone IDs from baseUz so checked state never resets on language switch
+  const getId = (yIdx, mIdx) => baseUz.years[yIdx]?.milestones[mIdx]?.id || `${career.id}-y${yIdx + 1}-${mIdx + 1}`;
+  const skill0 = career.skills?.[0] || (language === 'en' ? 'Core Skill' : 'Базовый навык');
+  const skill1 = career.skills?.[1] || (language === 'en' ? 'Analytical Skill' : 'Аналитика');
+  const skill2 = career.skills?.[2] || (language === 'en' ? 'Advanced Skill' : 'Продвинутый навык');
+
+  if (language === 'en') {
+    return {
+      title: `Future Vision 2030 Roadmap for ${career.title}`,
+      role: `${career.title} Specialist`,
+      years: [
+        {
+          year: 1,
+          title: 'Foundation: Core Theory & English Fluency',
+          focus: `Mastering fundamentals in ${career.category} and expanding your global outlook`,
+          milestones: [
+            { id: getId(0, 0), title: 'Reach B2 level in English (reading international documentation fluently)' },
+            { id: getId(0, 1), title: `Master core foundations of ${skill0}` },
+            { id: getId(0, 2), title: `Complete certified online courses in ${skill1}` },
+            { id: getId(0, 3), title: 'Read 5 influential international books in your field' },
+            { id: getId(0, 4), title: 'Join industry leader communities and professional networks' }
+          ]
+        },
+        {
+          year: 2,
+          title: 'Practice: Deepening Skills & Real Projects',
+          focus: 'Applying theory in practice, teamwork, and real-world testing',
+          milestones: [
+            { id: getId(1, 0), title: `Independently complete practical tasks using ${skill2}` },
+            { id: getId(1, 1), title: 'Participate directly in a real client order or team project' },
+            { id: getId(1, 2), title: 'Publish your first 3 high-quality works in a personal portfolio' },
+            { id: getId(1, 3), title: 'Receive direct mentorship and guidance from a senior specialist' },
+            { id: getId(1, 4), title: 'Compete in professional contests, olympiads, or hackathons' }
+          ]
+        },
+        {
+          year: 3,
+          title: 'Career: Professional Results & Global Stage',
+          focus: 'International certification, top university admission, or launching your career',
+          milestones: [
+            { id: getId(2, 0), title: 'Earn an internationally recognized professional certificate in your field' },
+            { id: getId(2, 1), title: 'Build a standout portfolio and an international-standard CV/LinkedIn' },
+            { id: getId(2, 2), title: 'Secure an internship or full-time role at a leading company' },
+            { id: getId(2, 3), title: 'Share your expertise with peers and build a strong personal brand' },
+            { id: getId(2, 4), title: 'Integrate modern AI & 2030 global trends into your daily workflow' }
+          ]
+        }
+      ]
+    };
+  }
+
+  // Russian ('ru')
+  return {
+    title: `План Future Vision 2030: ${career.title}`,
+    role: `Специалист: ${career.title}`,
+    years: [
+      {
+        year: 1,
+        title: 'Фундамент: Базовая теория и Английский язык',
+        focus: `Освоение основ в сфере «${career.category}» и расширение кругозора`,
+        milestones: [
+          { id: getId(0, 0), title: 'Довести английский язык до уровня B2 (чтение международных материалов)' },
+          { id: getId(0, 1), title: `Освоить базовые принципы: ${skill0}` },
+          { id: getId(0, 2), title: `Пройти профильные онлайн-курсы по направлению ${skill1}` },
+          { id: getId(0, 3), title: 'Прочитать 5 лучших международных книг по выбранной специальности' },
+          { id: getId(0, 4), title: 'Вступить в профессиональные сообщества и следить за лидерами сферы' }
+        ]
+      },
+      {
+        year: 2,
+        title: 'Практика: Углубление и Первые Проекты',
+        focus: 'Применение теории на практике, командная работа и реальные кейсы',
+        milestones: [
+          { id: getId(1, 0), title: `Самостоятельно выполнять практические задания по: ${skill2}` },
+          { id: getId(1, 1), title: 'Принять участие в реальном заказе или командном проекте' },
+          { id: getId(1, 2), title: 'Добавить первые 3 качественные работы в личное портфолио' },
+          { id: getId(1, 3), title: 'Получить менторство и обратную связь от опытного специалиста' },
+          { id: getId(1, 4), title: 'Проверить свои силы в профессиональных конкурсах, олимпиадах или хакатонах' }
+        ]
+      },
+      {
+        year: 3,
+        title: 'Карьера: Профессиональные Результаты и Выход на Рынок',
+        focus: 'Международный сертификат, престижный вуз или старт карьеры',
+        milestones: [
+          { id: getId(2, 0), title: 'Получить международный профессиональный сертификат в своей отрасли' },
+          { id: getId(2, 1), title: 'Сформировать сильное портфолио и резюме (CV) международного стандарта' },
+          { id: getId(2, 2), title: 'Пройти стажировку или получить постоянную работу в ведущей компании' },
+          { id: getId(2, 3), title: 'Делиться опытом с новичками и развивать личный бренд' },
+          { id: getId(2, 4), title: 'Интегрировать современные технологии и тренды 2030 года в свою работу' }
         ]
       }
     ]

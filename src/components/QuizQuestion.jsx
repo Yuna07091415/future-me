@@ -1,7 +1,9 @@
 import React from 'react';
+import { useApp } from '../context/AppContext';
 import { Check } from 'lucide-react';
 
 export default function QuizQuestion({ question, selectedOptionIndex, onSelectOption, totalQuestions }) {
+  const { t } = useApp();
   const optionLetters = ['A', 'B', 'C', 'D'];
 
   return (
@@ -12,7 +14,7 @@ export default function QuizQuestion({ question, selectedOptionIndex, onSelectOp
           <span className="divider-slash">/</span>
           <span className="total-q-num">{totalQuestions}</span>
         </div>
-        <span className="question-context-tag">Qiziqishlar Tahlili</span>
+        <span className="question-context-tag">{t('quizContextTag')}</span>
       </div>
 
       <h2 className="question-title">

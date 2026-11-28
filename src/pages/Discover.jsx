@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { QUIZ_QUESTIONS } from '../data/quizQuestions';
+import { getLocalizedQuizQuestions } from '../data/quizTranslations';
 import QuizQuestion from '../components/QuizQuestion';
 import ProgressBar from '../components/ProgressBar';
 import confetti from 'canvas-confetti';
@@ -17,8 +18,10 @@ import {
 } from 'lucide-react';
 
 export default function Discover() {
-  const { quizAnswers, saveAnswer, resetQuiz, t } = useApp();
+  const { quizAnswers, saveAnswer, resetQuiz, t, language } = useApp();
   const navigate = useNavigate();
+
+  const localizedQuestions = getLocalizedQuizQuestions(QUIZ_QUESTIONS, language);
 
   // Find first unanswered question or default to 0
   const [currentIndex, setCurrentIndex] = useState(() => {
@@ -34,8 +37,8 @@ export default function Discover() {
   const [showCelebration, setShowCelebration] = useState(false);
   const [warningMessage, setWarningMessage] = useState('');
 
-  const currentQuestion = QUIZ_QUESTIONS[currentIndex];
-  const totalQuestions = QUIZ_QUESTIONS.length;
+  const currentQuestion = localizedQuestions[currentIndex];
+  const totalQuestions = localizedQuestions.length;
   const currentAnswer = quizAnswers[currentQuestion.id];
   const isCurrentAnswered = currentAnswer !== undefined;
 
@@ -48,7 +51,7 @@ export default function Discover() {
 
   const handleNext = () => {
     if (!isCurrentAnswered) {
-      setWarningMessage('Iltimos, davom etishdan oldin variantlardan birini tanlang.');
+      setWarningMessage(t('quizWarning'));
       return;
     }
 
@@ -120,10 +123,10 @@ export default function Discover() {
           <div className="quiz-progress-meta">
             <div className="progress-info-left">
               <span className="progress-step-text">
-                Savol: <strong>{currentIndex + 1}</strong> / {totalQuestions}
+                {t('quizQuestionLabel')} <strong>{currentIndex + 1}</strong> / {totalQuestions}
               </span>
               <span className="progress-answered-tag">
-                {answeredCount} / {totalQuestions} ta javob berildi
+                {answeredCount} / {totalQuestions} {t('quizAnsweredCount')}
               </span>
             </div>
             <button

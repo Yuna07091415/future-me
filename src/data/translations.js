@@ -177,7 +177,41 @@ export const TRANSLATIONS = {
     footerLoveText: 'O‘zbekiston yoshlarining porloq kelajagi uchun yaratildi.',
     btnDetails: 'Batafsil',
     btnPlan2030: '2030 Reja',
-    matchLabel: 'Moslik:'
+    matchLabel: 'Moslik:',
+
+    // Discover & Quiz Extras
+    quizQuestionLabel: 'Savol:',
+    quizAnsweredCount: 'ta javob berildi',
+    quizContextTag: 'Qiziqishlar Tahlili',
+    quizSelected: 'Javob tanlandi',
+    quizNotSelected: 'Variant tanlang',
+    quizWarning: 'Iltimos, davom etishdan oldin variantlardan birini tanlang.',
+
+    // Results Extras
+    resultsEmptyTitle: 'Hali test topshirilmadi',
+    resultsEmptyDesc: 'Kasbiy yo‘nalishingiz va sizga mos keluvchi TOP 3 kasbni aniqlash uchun avval 15 ta savoldan iborat qiziqishlar testini topshiring.',
+    resultsEmptyBtn: 'Testni hoziroq boshlash',
+    resultsAnalyzedCount: 'ta savol tahlil qilindi',
+    resultsAlgoTag: 'Algoritm: Multi-Vektorli Qiziqishlar Modeli',
+
+    // Roadmap Extras
+    roadmapStatVisionLabel: '3 Yillik Reja Bajarilishi',
+    roadmapStatStepsDone: 'ta bosqich yakunlandi',
+    roadmapStatGoalsBadge: 'MAQSADLAR',
+    roadmapStatGoalsLabel: 'Shaxsiy Maqsadlar',
+    roadmapStatGoalsDone: 'ta maqsadga erishildi',
+    roadmapStatFavBadge: 'SEVIMLILAR',
+    roadmapStatFavLabel: 'Tanlangan Kasblar',
+    roadmapStatFavSub: 'Siz kuzatib borayotgan sohalar',
+    roadmapGoCatalog: 'Katalogga o‘tish',
+    roadmapYearSuffix: '-yil',
+    roadmapDoneSuffix: 'bajarildi',
+    roadmapFocusPrefix: 'Fokus:',
+    goalsBadge: 'Rivojlanish Kundaligi',
+    goalsProgressLabel: 'Rivojlanish ko‘rsatkichi:',
+    favBadge: 'Saqlanganlar',
+    favViewPlan: 'Rejani ko‘rish',
+    favRemove: 'O‘chirish'
   },
 
   en: {
@@ -358,7 +392,41 @@ export const TRANSLATIONS = {
     footerLoveText: 'Crafted for the bright future of youth.',
     btnDetails: 'Details',
     btnPlan2030: '2030 Plan',
-    matchLabel: 'Match:'
+    matchLabel: 'Match:',
+
+    // Discover & Quiz Extras
+    quizQuestionLabel: 'Question:',
+    quizAnsweredCount: 'answered',
+    quizContextTag: 'Interest Analysis',
+    quizSelected: 'Answer selected',
+    quizNotSelected: 'Select an option',
+    quizWarning: 'Please select an option before continuing.',
+
+    // Results Extras
+    resultsEmptyTitle: 'No test completed yet',
+    resultsEmptyDesc: 'Complete the 15-question interest discovery quiz first to uncover your career direction and TOP 3 matched professions.',
+    resultsEmptyBtn: 'Start the test now',
+    resultsAnalyzedCount: 'questions analyzed',
+    resultsAlgoTag: 'Algorithm: Multi-Vector Interest Model',
+
+    // Roadmap Extras
+    roadmapStatVisionLabel: '3-Year Plan Progress',
+    roadmapStatStepsDone: 'milestones completed',
+    roadmapStatGoalsBadge: 'GOALS',
+    roadmapStatGoalsLabel: 'Personal Goals',
+    roadmapStatGoalsDone: 'goals achieved',
+    roadmapStatFavBadge: 'SAVED',
+    roadmapStatFavLabel: 'Selected Careers',
+    roadmapStatFavSub: 'Fields you are tracking',
+    roadmapGoCatalog: 'Go to Catalog',
+    roadmapYearSuffix: 'Year ',
+    roadmapDoneSuffix: 'completed',
+    roadmapFocusPrefix: 'Focus:',
+    goalsBadge: 'Growth Journal',
+    goalsProgressLabel: 'Completion rate:',
+    favBadge: 'Bookmarked',
+    favViewPlan: 'View Plan',
+    favRemove: 'Remove'
   },
 
   ru: {
@@ -539,6 +607,40 @@ export const TRANSLATIONS = {
     footerLoveText: 'Создано для светлого будущего молодежи.',
     btnDetails: 'Подробнее',
     btnPlan2030: 'План 2030',
-    matchLabel: 'Совпадение:'
+    matchLabel: 'Совпадение:',
+
+    // Discover & Quiz Extras
+    quizQuestionLabel: 'Вопрос:',
+    quizAnsweredCount: 'ответов дано',
+    quizContextTag: 'Анализ Интересов',
+    quizSelected: 'Ответ выбран',
+    quizNotSelected: 'Выберите вариант',
+    quizWarning: 'Пожалуйста, выберите один из вариантов перед продолжением.',
+
+    // Results Extras
+    resultsEmptyTitle: 'Тест еще не пройден',
+    resultsEmptyDesc: 'Сначала пройдите тест из 15 вопросов, чтобы определить ваше направление и ТОП-3 подходящие профессии.',
+    resultsEmptyBtn: 'Начать тест сейчас',
+    resultsAnalyzedCount: 'вопросов проанализировано',
+    resultsAlgoTag: 'Алгоритм: Многовекторная Модель Интересов',
+
+    // Roadmap Extras
+    roadmapStatVisionLabel: 'Выполнение 3-летнего плана',
+    roadmapStatStepsDone: 'этапов завершено',
+    roadmapStatGoalsBadge: 'ЦЕЛИ',
+    roadmapStatGoalsLabel: 'Личные Цели',
+    roadmapStatGoalsDone: 'целей достигнуто',
+    roadmapStatFavBadge: 'ИЗБРАННОЕ',
+    roadmapStatFavLabel: 'Выбранные Профессии',
+    roadmapStatFavSub: 'Направления, которые вы отслеживаете',
+    roadmapGoCatalog: 'Перейти в каталог',
+    roadmapYearSuffix: '-й год',
+    roadmapDoneSuffix: 'выполнено',
+    roadmapFocusPrefix: 'Фокус:',
+    goalsBadge: 'Дневник Развития',
+    goalsProgressLabel: 'Прогресс выполнения:',
+    favBadge: 'Сохраненные',
+    favViewPlan: 'Смотреть план',
+    favRemove: 'Удалить'
   }
 };

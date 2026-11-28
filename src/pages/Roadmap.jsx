@@ -8,6 +8,7 @@ import CareerDetailContent from '../components/CareerDetailContent';
 import EmptyState from '../components/EmptyState';
 import DynamicIcon from '../components/DynamicIcon';
 import { CAREERS_DATA } from '../data/careersData';
+import { getLocalizedCareer } from '../data/careerTranslations';
 import { getRoadmapForCareer } from '../data/roadmapsData';
 import { 
   MapPin, 
@@ -33,8 +34,11 @@ export default function Roadmap() {
     roadmapMilestones,
     isMilestoneCompleted,
     toggleMilestone,
-    t
+    t,
+    language
   } = useApp();
+
+  const localizedSelectedCareer = getLocalizedCareer(selectedCareer, language);
 
   const [isAddGoalModalOpen, setIsAddGoalModalOpen] = useState(false);
   const [selectedCareerModal, setSelectedCareerModal] = useState(null);
@@ -48,8 +52,8 @@ export default function Roadmap() {
 
   // 3-Year Roadmap calculation for selected career
   const currentRoadmap = useMemo(() => {
-    return getRoadmapForCareer(selectedCareer);
-  }, [selectedCareer]);
+    return getRoadmapForCareer(localizedSelectedCareer, language);
+  }, [localizedSelectedCareer, language]);
 
   // Count milestones in current roadmap
   const allMilestoneIds = useMemo(() => {
@@ -129,8 +133,8 @@ export default function Roadmap() {
               <span className="dash-stat-badge">2030 Vision</span>
             </div>
             <div className="dash-stat-val">{roadmapProgressPct}%</div>
-            <div className="dash-stat-label">3 Yillik Reja Bajarilishi</div>
-            <p className="dash-stat-sub">{completedMilestonesCount} / {allMilestoneIds.length} ta bosqich yakunlandi</p>
+            <div className="dash-stat-label">{t('roadmapStatVisionLabel')}</div>
+            <p className="dash-stat-sub">{completedMilestonesCount} / {allMilestoneIds.length} {t('roadmapStatStepsDone')}</p>
             <ProgressBar value={roadmapProgressPct} max={100} showText={false} height="6px" />
           </div>
 
@@ -140,11 +144,11 @@ export default function Roadmap() {
               <div className="dash-stat-icon-wrap" style={{ background: 'rgba(168, 85, 247, 0.15)', color: '#A855F7' }}>
                 <Target size={20} />
               </div>
-              <span className="dash-stat-badge">Maqsadlar</span>
+              <span className="dash-stat-badge">{t('roadmapStatGoalsBadge')}</span>
             </div>
             <div className="dash-stat-val">{goalsProgressPct}%</div>
-            <div className="dash-stat-label">Shaxsiy Maqsadlar</div>
-            <p className="dash-stat-sub">{completedGoals} / {totalGoals} ta maqsadga erishildi</p>
+            <div className="dash-stat-label">{t('roadmapStatGoalsLabel')}</div>
+            <p className="dash-stat-sub">{completedGoals} / {totalGoals} {t('roadmapStatGoalsDone')}</p>
             <ProgressBar value={goalsProgressPct} max={100} showText={false} height="6px" colorGradient="linear-gradient(90deg, #A855F7, #EC4899)" />
           </div>
 
@@ -154,13 +158,13 @@ export default function Roadmap() {
               <div className="dash-stat-icon-wrap" style={{ background: 'rgba(236, 72, 153, 0.15)', color: '#EC4899' }}>
                 <Bookmark size={20} />
               </div>
-              <span className="dash-stat-badge">Sevimlilar</span>
+              <span className="dash-stat-badge">{t('roadmapStatFavBadge')}</span>
             </div>
             <div className="dash-stat-val">{favorites.length}</div>
-            <div className="dash-stat-label">Tanlangan Kasblar</div>
-            <p className="dash-stat-sub">Siz kuzatib borayotgan sohalar</p>
+            <div className="dash-stat-label">{t('roadmapStatFavLabel')}</div>
+            <p className="dash-stat-sub">{t('roadmapStatFavSub')}</p>
             <div className="dash-quick-link">
-              <Link to="/careers" className="link-sub">Katalogga o‘tish →</Link>
+              <Link to="/careers" className="link-sub">{t('roadmapGoCatalog')} →</Link>
             </div>
           </div>
         </section>
@@ -194,11 +198,14 @@ export default function Roadmap() {
                 value={selectedCareerId}
                 onChange={(e) => setSelectedCareerId(e.target.value)}
               >
-                {CAREERS_DATA.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.title} ({c.category})
-                  </option>
-                ))}
+                {CAREERS_DATA.map((c) => {
+                  const locC = getLocalizedCareer(c, language);
+                  return (
+                    <option key={c.id} value={c.id}>
+                      {locC.title} ({locC.category})
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
@@ -217,18 +224,18 @@ export default function Roadmap() {
             </div>
 
             <div className="banner-career-info">
-              <span className="banner-cat-tag">{selectedCareer.category}</span>
-              <h3 className="banner-career-title">{selectedCareer.title}</h3>
-              <p className="banner-career-desc">{selectedCareer.shortDescription}</p>
+              <span className="banner-cat-tag">{localizedSelectedCareer.category}</span>
+              <h3 className="banner-career-title">{localizedSelectedCareer.title}</h3>
+              <p className="banner-career-desc">{localizedSelectedCareer.shortDescription}</p>
             </div>
 
             <div className="banner-actions">
               <button
                 type="button"
                 className="btn-glass-secondary btn-sm"
-                onClick={() => setSelectedCareerModal(selectedCareer)}
+                onClick={() => setSelectedCareerModal(localizedSelectedCareer)}
               >
-                Kasb pasporti
+                {t('btnDetails')}
               </button>
             </div>
           </div>
@@ -244,14 +251,16 @@ export default function Roadmap() {
                 <div key={yearItem.year} className="year-card">
                   <div className="year-card-header">
                     <div className="year-badge">
-                      <span className="year-num">{yearItem.year}-yil</span>
+                      <span className="year-num">
+                        {language === 'en' ? `${t('roadmapYearSuffix')}${yearItem.year}` : `${yearItem.year}${t('roadmapYearSuffix')}`}
+                      </span>
                     </div>
-                    <span className="year-progress-tag">{yearDoneCount}/{yearMilestones.length} bajarildi</span>
+                    <span className="year-progress-tag">{yearDoneCount}/{yearMilestones.length} {t('roadmapDoneSuffix')}</span>
                   </div>
 
                   <h3 className="year-card-title">{yearItem.title}</h3>
                   <p className="year-card-focus">
-                    <strong>Fokus:</strong> {yearItem.focus}
+                    <strong>{t('roadmapFocusPrefix')}</strong> {yearItem.focus}
                   </p>
 
                   <ProgressBar 
@@ -308,7 +317,7 @@ export default function Roadmap() {
             <div>
               <div className="section-badge">
                 <Target size={14} />
-                <span>Rivojlanish Kundaligi</span>
+                <span>{t('goalsBadge')}</span>
               </div>
               <h2 className="goals-section-title">
                 {t('goalsTitle')} <span className="text-gradient">{t('goalsHighlight')}</span>
@@ -355,7 +364,7 @@ export default function Roadmap() {
             </div>
 
             <span className="goals-stat-summary">
-              Rivojlanish ko‘rsatkichi: <strong>{goalsProgressPct}%</strong>
+              {t('goalsProgressLabel')} <strong>{goalsProgressPct}%</strong>
             </span>
           </div>
 
@@ -386,7 +395,7 @@ export default function Roadmap() {
           <div className="favorites-header-panel">
             <div className="section-badge">
               <Bookmark size={14} />
-              <span>Saqlanganlar</span>
+              <span>{t('favBadge')}</span>
             </div>
             <h2 className="favorites-section-title">
               {t('favTitle')} <span className="text-gradient">{t('favHighlight')}</span>
@@ -398,7 +407,9 @@ export default function Roadmap() {
 
           {favoritedCareers.length > 0 ? (
             <div className="favorites-horizontal-grid">
-              {favoritedCareers.map((career) => (
+              {favoritedCareers.map((career) => {
+                const locCareer = getLocalizedCareer(career, language);
+                return (
                 <div key={career.id} className="favorite-compact-card">
                   <div 
                     className="fav-icon-box"
@@ -411,9 +422,9 @@ export default function Roadmap() {
                   </div>
 
                   <div className="fav-info-box">
-                    <span className="fav-cat-tag">{career.category}</span>
-                    <h4 className="fav-title">{career.title}</h4>
-                    <p className="fav-desc">{career.shortDescription}</p>
+                    <span className="fav-cat-tag">{locCareer.category}</span>
+                    <h4 className="fav-title">{locCareer.title}</h4>
+                    <p className="fav-desc">{locCareer.shortDescription}</p>
                   </div>
 
                   <div className="fav-actions-box">
@@ -424,9 +435,9 @@ export default function Roadmap() {
                         setSelectedCareerId(career.id);
                         window.scrollTo({ top: 350, behavior: 'smooth' });
                       }}
-                      title="Ushbu kasb rejasini ko‘rish"
+                      title={t('favViewPlan')}
                     >
-                      <span>Rejani ko‘rish</span>
+                      <span>{t('favViewPlan')}</span>
                       <ArrowRight size={14} />
                     </button>
 
@@ -434,13 +445,14 @@ export default function Roadmap() {
                       type="button"
                       className="btn-fav-remove"
                       onClick={() => toggleFavorite(career.id)}
-                      title="Sevimlilardan o‘chirish"
+                      title={t('favRemove')}
                     >
-                      O‘chirish
+                      {t('favRemove')}
                     </button>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="empty-fav-box">

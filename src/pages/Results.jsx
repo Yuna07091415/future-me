@@ -34,9 +34,9 @@ export default function Results() {
         <div className="page-container" style={{ padding: '80px 20px' }}>
           <EmptyState
             iconName="BarChart3"
-            title="Hali test topshirilmadi"
-            description="Kasbiy yo‘nalishingiz va sizga mos keluvchi TOP 3 kasbni aniqlash uchun avval 15 ta savoldan iborat qiziqishlar testini topshiring."
-            actionText="Testni hoziroq boshlash"
+            title={t('resultsEmptyTitle')}
+            description={t('resultsEmptyDesc')}
+            actionText={t('resultsEmptyBtn')}
             actionLink="/discover"
           />
         </div>
@@ -95,11 +95,11 @@ export default function Results() {
           <div className="results-quick-stats">
             <span className="stat-pill">
               <CheckCircle2 size={14} color="#10B981" />
-              {totalAnswered} ta savol tahlil qilindi
+              {totalAnswered} {t('resultsAnalyzedCount')}
             </span>
             <span className="stat-pill">
               <Sparkles size={14} color="#22D3EE" />
-              Algoritm: Multi-Vektorli Qiziqishlar Modeli
+              {t('resultsAlgoTag')}
             </span>
             <button
               type="button"
