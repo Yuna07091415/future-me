@@ -18,39 +18,31 @@ import {
 } from 'lucide-react';
 
 export default function HeroSection() {
-  const { t } = useApp();
+  const { t, language } = useApp();
   const [activePreview, setActivePreview] = useState(0);
 
-  const previewCareers = [
-    { 
-      role: 'AI Dasturchi', 
-      cat: 'Texnologiya', 
-      stat: '+38% Global Talab', 
-      icon: Cpu,
-      color: '#F472B6'
-    },
-    { 
-      role: 'Biotibbiyot Shifokori', 
-      cat: 'Tibbiyot', 
-      stat: 'Oliy Ehtiyoj', 
-      icon: Stethoscope,
-      color: '#C084FC'
-    },
-    { 
-      role: 'Xalqaro Advokat', 
-      cat: 'Huquq & Arbitraj', 
-      stat: 'Yuksak Nufuz', 
-      icon: Scale,
-      color: '#38BDF8'
-    },
-    { 
-      role: 'Avia Styuardessa', 
-      cat: 'Aviatsiya', 
-      stat: '140+ Mamlakat', 
-      icon: Plane,
-      color: '#F9A8D4'
-    }
-  ];
+  const previewCareersByLang = {
+    uz: [
+      { role: 'AI Dasturchi', cat: 'Texnologiya', stat: '+38% Global Talab', icon: Cpu, color: '#F472B6' },
+      { role: 'Biotibbiyot Shifokori', cat: 'Tibbiyot', stat: 'Oliy Ehtiyoj', icon: Stethoscope, color: '#C084FC' },
+      { role: 'Xalqaro Advokat', cat: 'Huquq & Arbitraj', stat: 'Yuksak Nufuz', icon: Scale, color: '#38BDF8' },
+      { role: 'Avia Styuardessa', cat: 'Aviatsiya', stat: '140+ Mamlakat', icon: Plane, color: '#F9A8D4' }
+    ],
+    en: [
+      { role: 'AI Engineer', cat: 'Technology', stat: '+38% Global Demand', icon: Cpu, color: '#F472B6' },
+      { role: 'Biomedical Doctor', cat: 'Medicine', stat: 'High Demand', icon: Stethoscope, color: '#C084FC' },
+      { role: 'International Lawyer', cat: 'Law & Arbitration', stat: 'High Prestige', icon: Scale, color: '#38BDF8' },
+      { role: 'Flight Attendant', cat: 'Aviation', stat: '140+ Countries', icon: Plane, color: '#F9A8D4' }
+    ],
+    ru: [
+      { role: 'AI-Разработчик', cat: 'Технологии', stat: '+38% Мировой Спрос', icon: Cpu, color: '#F472B6' },
+      { role: 'Биомедицинский Врач', cat: 'Медицина', stat: 'Высокий Спрос', icon: Stethoscope, color: '#C084FC' },
+      { role: 'Международный Адвокат', cat: 'Право и Арбитраж', stat: 'Высокий Престиж', icon: Scale, color: '#38BDF8' },
+      { role: 'Бортпроводница', cat: 'Авиация', stat: '140+ Стран', icon: Plane, color: '#F9A8D4' }
+    ]
+  };
+
+  const previewCareers = previewCareersByLang[language] || previewCareersByLang.uz;
 
   return (
     <section className="hero-editorial-root cosmic-hero-bg">
@@ -63,23 +55,23 @@ export default function HeroSection() {
         <div className="hero-editorial-left">
           <div className="editorial-pill-badge">
             <span className="pill-dot"></span>
-            <span>FUTURE ME • 2030 EKOTIZIMI</span>
+            <span>{t('heroBadge')}</span>
           </div>
 
           <div className="hero-headline-wrapper">
             <h1 className="hero-editorial-headline">
-              Kelajagingni <br />
-              <span className="editorial-serif-italic">Bitta Qaror</span> Bilan Qur.
+              {t('heroTitlePrefix')} <br />
+              <span className="editorial-serif-italic">{t('heroTitleHighlight')}</span> {t('heroTitleSuffix')}
             </h1>
           </div>
 
           <div className="hero-motto-callout">
             <Sparkles size={15} className="motto-icon" />
-            <span>"Your Future Starts With One Decision."</span>
+            <span>{t('heroMotto')}</span>
           </div>
 
           <p className="hero-editorial-lead">
-            FUTURE ME — o‘quvchilarga o‘z qiziqishlari, qobiliyatlari va kuchli tomonlarini aniqlash, 2030-yilgi eng nufuzli kasblarni tanlash hamda shaxsiy rivojlanish rejasini tuzishda yordam beradigan zamonaviy platforma.
+            {t('heroDesc')}
           </p>
 
           {/* Action Buttons (Luminous Pink/Lavender Pill + Glass Outline) */}
@@ -99,14 +91,14 @@ export default function HeroSection() {
 
           <div className="hero-status-line">
             <span className="status-pulse-dot"></span>
-            <span>22+ Zamonaviy Kasb • 7 Vektorli Psixometrik Tahlil</span>
+            <span>{t('heroStatusLine')}</span>
           </div>
         </div>
 
         {/* Right Column: Glowing Ringed Cosmic Orb & Frosted Glass Cards */}
         <div className="hero-editorial-right">
           <div className="cosmic-orb-stage">
-            {/* 3D-Style Glowing Planet / Orb + Tilted Orbital Ring (Image 1 & 3) */}
+            {/* 3D-Style Glowing Planet / Orb + Tilted Orbital Ring */}
             <div className="cosmic-planet-wrapper" aria-hidden="true">
               <div className="cosmic-planet-sphere">
                 <div className="planet-specular-light"></div>
@@ -146,26 +138,26 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Floating Glass Card 1: Top Right (Image 1 style) */}
+            {/* Floating Glass Card 1: Top Right */}
             <div className="floating-metric-card floating-top-right">
               <div className="floating-metric-body">
                 <div className="floating-metric-value">22+</div>
-                <div className="floating-metric-label">Istiqbolli Kasb</div>
+                <div className="floating-metric-label">{t('heroFloatCareers')}</div>
               </div>
               <div className="floating-circle-arrow">
                 <Heart size={15} fill="currentColor" />
               </div>
             </div>
 
-            {/* Floating Glass Card 2: Bottom Left (Image 1 style) */}
+            {/* Floating Glass Card 2: Bottom Left */}
             <div className="floating-metric-card floating-bottom-left">
               <div className="floating-star-row">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={13} fill="#F472B6" color="#F472B6" />
                 ))}
               </div>
-              <div className="floating-rating-label">98% Aniq Tavsiyalar</div>
-              <div className="floating-rating-sub">7-Vektorli Algoritm</div>
+              <div className="floating-rating-label">{t('heroFloatRating')}</div>
+              <div className="floating-rating-sub">{t('heroFloatAlgo')}</div>
             </div>
           </div>
         </div>
@@ -180,7 +172,7 @@ export default function HeroSection() {
             </div>
             <div className="ribbon-text-group">
               <span className="ribbon-num">22+</span>
-              <span className="ribbon-label">Istiqbolli Kasblar</span>
+              <span className="ribbon-label">{t('ribbonCareers')}</span>
             </div>
           </div>
 
@@ -191,8 +183,8 @@ export default function HeroSection() {
               <Award size={20} />
             </div>
             <div className="ribbon-text-group">
-              <span className="ribbon-num">15 Ta</span>
-              <span className="ribbon-label">Chuqur Savollar</span>
+              <span className="ribbon-num">{t('metric2Val')}</span>
+              <span className="ribbon-label">{t('ribbonQuestions')}</span>
             </div>
           </div>
 
@@ -203,8 +195,8 @@ export default function HeroSection() {
               <TrendingUp size={20} />
             </div>
             <div className="ribbon-text-group">
-              <span className="ribbon-num">7 Ta</span>
-              <span className="ribbon-label">Iste'dod Vektori</span>
+              <span className="ribbon-num">7</span>
+              <span className="ribbon-label">{t('ribbonVectors')}</span>
             </div>
           </div>
 
@@ -216,7 +208,7 @@ export default function HeroSection() {
             </div>
             <div className="ribbon-text-group">
               <span className="ribbon-num">98%</span>
-              <span className="ribbon-label">Mamnuniyat Darajasi</span>
+              <span className="ribbon-label">{t('ribbonSatisfaction')}</span>
             </div>
           </div>
         </div>

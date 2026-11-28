@@ -474,6 +474,99 @@
   cursor: pointer;
 }
 
+/* Mobile Menu Drawer */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 4, 12, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 99;
+}
+
+.mobile-menu-drawer {
+  position: absolute;
+  top: 73px;
+  left: 16px;
+  right: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+  background: var(--bg-glass-strong);
+  color: var(--text-primary);
+}
+
+.mobile-nav-link-active {
+  background: var(--pill-dark-bg) !important;
+  color: var(--pill-dark-text) !important;
+  box-shadow: 0 4px 14px rgba(244, 114, 182, 0.35);
+}
+
+.mobile-drawer-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-theme-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+.mobile-theme-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mobile-theme-pill-btn:hover {
+  border-color: var(--accent-terracotta);
+}
+
 /* ========================================================
    HERO SECTION (COSMIC ETHEREAL ORB & GLASS CONSOLE)
    ======================================================== */
@@ -1638,11 +1731,12 @@
    QUIZ (DISCOVER) COMPONENT & QUESTION NUMBER PILLS
    ======================================================== */
 .quiz-progress-panel {
+  max-width: 860px;
+  margin: 0 auto 24px auto;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 24px 30px;
-  margin-bottom: 32px;
+  padding: 18px 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
@@ -1715,13 +1809,13 @@
 }
 
 .q-pill {
-  width: 38px !important;
-  height: 38px !important;
-  border-radius: 10px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 9px !important;
   background: var(--bg-secondary) !important;
   border: 1px solid var(--border-subtle) !important;
   color: var(--text-secondary) !important;
-  font-size: 0.9rem !important;
+  font-size: 0.84rem !important;
   font-weight: 700 !important;
   display: inline-flex !important;
   align-items: center !important;

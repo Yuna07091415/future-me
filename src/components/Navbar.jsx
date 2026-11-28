@@ -190,16 +190,14 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="mobile-theme-row" style={{ marginTop: '14px' }}>
-                <span>Interfeys rejimi:</span>
+                <span>{theme === 'dark' ? t('lightMode') : t('darkMode')}:</span>
                 <button 
                   type="button" 
-                  className="theme-toggle-btn" 
+                  className="mobile-theme-pill-btn" 
                   onClick={toggleTheme}
                 >
-                  {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                  <span style={{ marginLeft: 8, fontSize: '0.85rem' }}>
-                    {theme === 'dark' ? t('lightMode') : t('darkMode')}
-                  </span>
+                  {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+                  <span>{theme === 'dark' ? t('lightMode') : t('darkMode')}</span>
                 </button>
               </div>
             </div>

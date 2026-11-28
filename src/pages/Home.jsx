@@ -91,18 +91,18 @@ export default function Home() {
             <div className="header-split-left">
               <div className="editorial-pill-badge">
                 <span className="pill-dot"></span>
-                <span>Yo‘nalishlar va Sohalar</span>
+                <span>{t('catBadge')}</span>
               </div>
               <h2 className="editorial-section-title">
-                Keng Qamrovli <br />
-                <span className="editorial-serif-italic">Kasbiy Yo‘nalishlar</span>
+                {t('catTitle1')} <br />
+                <span className="editorial-serif-italic">{t('catTitle2')}</span>
               </h2>
               <p className="editorial-section-lead">
-                Strategiyadan natijagacha — o‘z iqtidoringiz va shaxsiyatingizga eng mos sohani aniqlang va 2030 maqsadlaringiz sari dadil qadam tashlang.
+                {t('catLead')}
               </p>
               <div className="header-left-cta">
                 <Link to="/careers" className="btn-editorial-primary">
-                  <span>Barchasini Ko‘rish</span>
+                  <span>{t('catBtnAll')}</span>
                   <div className="btn-circle-icon">
                     <ArrowRight size={15} />
                   </div>
@@ -129,7 +129,7 @@ export default function Home() {
                         </div>
                       </div>
                       <h3 className="cat-editorial-title">{cat.name}</h3>
-                      <p className="cat-editorial-count">{careersInCat.length} ta zamonaviy kasb va o‘sish imkoniyatlari.</p>
+                      <p className="cat-editorial-count">{careersInCat.length} {t('catCardSuffix')}</p>
                     </Link>
                   );
                 })}
@@ -156,13 +156,13 @@ export default function Home() {
             <div>
               <div className="editorial-pill-badge badge-dark-contrast">
                 <span className="pill-dot dot-warm"></span>
-                <span>Tavsiya Etilgan Kasblar</span>
+                <span>{t('darkBadge')}</span>
               </div>
               <h2 className="dark-section-title">
-                2030-Yilning Eng Nufuzli <span className="editorial-serif-italic">Kasblari</span>
+                {t('darkTitle1')} <span className="editorial-serif-italic">{t('darkTitle2')}</span>
               </h2>
               <p className="dark-section-lead">
-                Mehnat bozorida yuqori talabga ega, barqaror va katta daromad keltiruvchi yetakchi kasblar katalogi.
+                {t('darkLead')}
               </p>
             </div>
 
@@ -197,7 +197,7 @@ export default function Home() {
 
           <div className="dark-section-cta">
             <Link to="/careers" className="btn-editorial-light-pill">
-              <span>Barcha 22 ta Kasbni Ko‘rish</span>
+              <span>{t('darkBtnAll')}</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -220,13 +220,13 @@ export default function Home() {
           <div className="section-header-center">
             <div className="editorial-pill-badge">
               <span className="pill-dot"></span>
-              <span>Platforma Qanday Ishlaydi?</span>
+              <span>{t('stepBadge')}</span>
             </div>
             <h2 className="editorial-section-title">
-              3 Bosqichda <span className="editorial-serif-italic">Orzuyingizdagi Kelajak</span>
+              {t('stepTitle1')} <span className="editorial-serif-italic">{t('stepTitle2')}</span>
             </h2>
             <p className="editorial-section-lead max-w-lead">
-              Murakkab testlarsiz, ilmiy asoslangan psixometrik metodologiya yordamida o‘z yo‘lingizni aniqlang.
+              {t('stepLead')}
             </p>
           </div>
 
@@ -253,10 +253,10 @@ export default function Home() {
             <div>
               <div className="editorial-pill-badge">
                 <span className="pill-dot"></span>
-                <span>Foydalanuvchilar Fikrlari</span>
+                <span>{t('testimBadge')}</span>
               </div>
               <h2 className="editorial-section-title">
-                O‘quvchilar Biz Haqimizda <span className="editorial-serif-italic">Nima Deydi?</span>
+                {t('testimTitle1')} <span className="editorial-serif-italic">{t('testimTitle2')}</span>
               </h2>
             </div>
             <div className="slider-nav-arrows">
@@ -302,29 +302,29 @@ export default function Home() {
             <div className="cta-together-header">
               <div className="editorial-pill-badge">
                 <span className="pill-dot"></span>
-                <span>Shaxsiy Rejangizni Boshlang</span>
+                <span>{t('ctaBadge')}</span>
               </div>
               <div className="together-title-wrap">
                 <h2 className="cta-together-title">
-                  O‘z Kelajagingizni <br />
-                  <span className="editorial-serif-italic">Birgalikda Yaratamiz</span>
+                  {t('ctaTitle1')} <br />
+                  <span className="editorial-serif-italic">{t('ctaTitle2')}</span>
                 </h2>
                 <div className="editorial-slash-doodles">
                   <span></span><span></span><span></span>
                 </div>
               </div>
               <p className="cta-together-desc">
-                Birgina to‘g‘ri qaror butun umringizni o‘zgartirishi mumkin. 15 daqiqalik qiziqarli test orqali o‘zingizga mos TOP 3 kasb va 3 yillik yo‘l xaritasini oling.
+                {t('ctaLead')}
               </p>
             </div>
 
             <form onSubmit={handleLeadSubmit} className="cta-together-form-box">
               <div className="together-inputs-row">
                 <div className="together-input-group">
-                  <label>Ismingiz *</label>
+                  <label>{t('ctaNameLabel')}</label>
                   <input 
                     type="text" 
-                    placeholder="Masalan: Azizbek" 
+                    placeholder={t('ctaNamePh')} 
                     className="together-input" 
                     value={leadName}
                     onChange={(e) => setLeadName(e.target.value)}
@@ -332,30 +332,30 @@ export default function Home() {
                   />
                 </div>
                 <div className="together-input-group">
-                  <label>Sinfingiz yoki Bosqichingiz</label>
+                  <label>{t('ctaStageLabel')}</label>
                   <input 
                     type="text" 
-                    placeholder="Masalan: 10-sinf yoki Talaba" 
+                    placeholder={t('ctaStagePh')} 
                     className="together-input" 
                     value={leadStage}
                     onChange={(e) => setLeadStage(e.target.value)}
                   />
                 </div>
                 <div className="together-input-group">
-                  <label>Telegram yoki Telefon</label>
+                  <label>{t('ctaContactLabel')}</label>
                   <input 
                     type="text" 
-                    placeholder="Masalan: @azizbek yoki +998 90 123 45 67" 
+                    placeholder={t('ctaContactPh')} 
                     className="together-input" 
                     value={leadContact}
                     onChange={(e) => setLeadContact(e.target.value)}
                   />
                 </div>
                 <div className="together-input-group">
-                  <label>Qiziqishingiz / Xabar</label>
+                  <label>{t('ctaMsgLabel')}</label>
                   <input 
                     type="text" 
-                    placeholder="Masalan: IT va Sun'iy intellekt sohasi" 
+                    placeholder={t('ctaMsgPh')} 
                     className="together-input" 
                     value={leadMessage}
                     onChange={(e) => setLeadMessage(e.target.value)}
@@ -377,7 +377,7 @@ export default function Home() {
                   disabled={isSendingLead} 
                   className="btn-editorial-primary w-full-mobile"
                 >
-                  <span>{isSendingLead ? 'Yuborilmoqda...' : leadSent ? 'Yuborildi ✓' : 'Telegramga Yuborish'}</span>
+                  <span>{isSendingLead ? t('ctaBtnSending') : leadSent ? t('ctaBtnSent') : t('ctaBtnSend')}</span>
                   <div className="btn-circle-icon">
                     <ArrowRight size={16} />
                   </div>
